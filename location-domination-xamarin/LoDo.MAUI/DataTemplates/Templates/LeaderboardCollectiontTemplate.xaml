@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:LoDo.MAUI.Models.App"
+             xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             x:DataType="models:LeaderboardPageUserModel"
+             x:Class="LoDo.MAUI.DataTemplates.Templates.LeaderboardCollectionTemplate">
+    <Grid HeightRequest="50" ColumnDefinitions="*,*" Padding="10,0" HorizontalOptions="Fill">
+        <HorizontalStackLayout HorizontalOptions="Fill" Spacing="15">
+            <Label Text="{Binding Rank}"
+                   VerticalOptions="Center"
+                   TextColor="#2F6D80"
+                   FontFamily="RalewayRegular"
+                   HorizontalOptions="Start"
+                   FontAttributes="Bold"
+                   FontSize="22"/>
+            <Label Text="{Binding Username}"
+                   VerticalOptions="Center"
+                   TextColor="#2F6D80"
+                   FontFamily="RalewayRegular"
+                   HorizontalOptions="Start"
+                   FontAttributes="Bold"
+                   FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Grid.Column="1" Spacing="15" HorizontalOptions="End">
+                <Image Source="trophy" Scale="1.2" HorizontalOptions="End"/>
+                <Label Text="{Binding Score}"
+                       Grid.Column="1"
+                       VerticalOptions="Center"
+                       TextColor="#2F6D80"
+                       FontFamily="RalewayRegular"
+                       HorizontalOptions="End"
+                       FontAttributes="Bold"
+                       FontSize="18"/>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentView>
