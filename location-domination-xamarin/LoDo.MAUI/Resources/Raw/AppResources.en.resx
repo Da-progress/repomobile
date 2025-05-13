@@ -1,0 +1,618 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FIRST_LINE" xml:space="preserve">
+    <value>Hello, how are you?</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="LANGUAGE_SELECT" xml:space="preserve">
+    <value>Select language</value>
+  </data>
+  <data name="PLEASE_RESTART" xml:space="preserve">
+    <value>Please restart application.</value>
+  </data>
+  <data name="ABOUT_PAGE_LABEL" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="ADD_LOCATION_PAGE_LABEL" xml:space="preserve">
+    <value>Add location</value>
+  </data>
+  <data name="CREATE_GAME_PAGE_LABEL" xml:space="preserve">
+    <value>Create Game</value>
+  </data>
+  <data name="EVENTS_PAGE_LABEL" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="LEADERBOARD_PAGE_LABEL" xml:space="preserve">
+    <value>Leaderboard</value>
+  </data>
+  <data name="LOCATIONS_PAGE_LABEL" xml:space="preserve">
+    <value>Locations</value>
+  </data>
+  <data name="LOCATION_LEADERBOARD" xml:space="preserve">
+    <value>Location Leaderboard</value>
+  </data>
+  <data name="MAP_PAGE_LABEL" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="RECORD_RESULT_PAGE_LABEL" xml:space="preserve">
+    <value>Record Result</value>
+  </data>
+  <data name="LOCATION_PAGE_LABEL" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="CREATE_GAME" xml:space="preserve">
+    <value>Create game</value>
+  </data>
+  <data name="GAMES" xml:space="preserve">
+    <value>Games</value>
+  </data>
+  <data name="RECORD_RESULT" xml:space="preserve">
+    <value>Record Result</value>
+  </data>
+  <data name="SEARCH_BOX_PLACEHOLDER" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="ENTER_REGISTRATION_CODE" xml:space="preserve">
+    <value>Enter registration code</value>
+  </data>
+  <data name="APPLY_BUTTON_CAPTION" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="RADIUS_TEXT_LABEL" xml:space="preserve">
+    <value>Radius</value>
+  </data>
+  <data name="SPORTS_TEXT_LABEL" xml:space="preserve">
+    <value>Sports</value>
+  </data>
+  <data name="LOCATIONS_SORT_ASC_BUTTON_LABEL" xml:space="preserve">
+    <value>Ascending by name</value>
+  </data>
+  <data name="LOCATIONS_SORT_DESC_BUTTON_LABEL" xml:space="preserve">
+    <value>Descending by name</value>
+  </data>
+  <data name="LOCATIONS_SORT_MOST_FREQ_BUTTON_LABEL" xml:space="preserve">
+    <value>Most frequent locations</value>
+  </data>
+  <data name="LOCATIONS_SORT_DIALOG_TITLE" xml:space="preserve">
+    <value>Sort</value>
+  </data>
+  <data name="PLEASE_CHECK_THE_URL" xml:space="preserve">
+    <value>Please check the url</value>
+  </data>
+  <data name="ERROR_BY_JSON_SERIALIZATION" xml:space="preserve">
+    <value>Error by JSON serialization</value>
+  </data>
+  <data name="CONNECTION_ERROR" xml:space="preserve">
+    <value>Connection error</value>
+  </data>
+  <data name="CHECK_USERDATA_OR_CONNECTION" xml:space="preserve">
+    <value>Check userdata or connection</value>
+  </data>
+  <data name="CONNECTION_TIMEOUT" xml:space="preserve">
+    <value>Connection lost or timed out</value>
+  </data>
+  <data name="NO_CONNECTION" xml:space="preserve">
+    <value>No connection</value>
+  </data>
+  <data name="NETWORK_NOT_AVAILABLE" xml:space="preserve">
+    <value>Network not available, check connections</value>
+  </data>
+  <data name="UNKNOWN_EXCEPTION" xml:space="preserve">
+    <value>Unknown error</value>
+  </data>
+  <data name="CONTEXT_PATH_NOT_FOUND" xml:space="preserve">
+    <value>Problem connecting server</value>
+  </data>
+  <data name="SERVER_ERROR" xml:space="preserve">
+    <value>Server error, operation aborted</value>
+  </data>
+  <data name="GAME_STATE_OPEN" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="GAME_STATE_PLANNED" xml:space="preserve">
+    <value>Planned</value>
+  </data>
+  <data name="GAME_STATE_PLAYED" xml:space="preserve">
+    <value>Played</value>
+  </data>
+  <data name="DELETE_BUTTON_CAPTION" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="SUGGEST_OTHER_APPOINTMENTS_BUTTON_CAPTION" xml:space="preserve">
+    <value>Suggest other appointments</value>
+  </data>
+  <data name="CREATE_GAME_BUTTON_CAPTION" xml:space="preserve">
+    <value>Create game</value>
+  </data>
+  <data name="GAME_SEARCH_LOCATION_PAGE_TITLE" xml:space="preserve">
+    <value>Search Location</value>
+  </data>
+  <data name="GAME_SEARCH_PLAYER_PAGE_TITLE" xml:space="preserve">
+    <value>Search Player</value>
+  </data>
+  <data name="LOCATION_GAMES_PAGE_TITLE" xml:space="preserve">
+    <value>Location Games</value>
+  </data>
+  <data name="OPEN_GAME_PAGE_LABEL" xml:space="preserve">
+    <value>Open Game</value>
+  </data>
+  <data name="PICK" xml:space="preserve">
+    <value>'pick ...'</value>
+  </data>
+  <data name="OPEN_GAME_2_PAGE_TITLE" xml:space="preserve">
+    <value>Open Game</value>
+  </data>
+  <data name="SUGGEST_CONFIRM_BUTTON_CAPTION" xml:space="preserve">
+    <value>Suggest</value>
+  </data>
+  <data name="APPROVE_RECORDED_GAME_BUTTON_CAPTION" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="DECLINE_RECORDED_GAME_BUTTON_CAPTION" xml:space="preserve">
+    <value>Decline</value>
+  </data>
+  <data name="RECORD_GAME_BUTTON_CAPTION" xml:space="preserve">
+    <value>Record</value>
+  </data>
+  <data name="PLANNED_GAME_PAGE_LABEL" xml:space="preserve">
+    <value>Planned Game</value>
+  </data>
+  <data name="RECORD_GAME_PAGE_LABEL" xml:space="preserve">
+    <value>Recorded Game</value>
+  </data>
+  <data name="PLAYED_GAME_PAGE_LABEL" xml:space="preserve">
+    <value>Played Game</value>
+  </data>
+  <data name="CHALLENGE_BUTTON_LABEL" xml:space="preserve">
+    <value>Challenge</value>
+  </data>
+  <data name="UNKNOWN_GAME_STATE" xml:space="preserve">
+    <value>Unknown Game state</value>
+  </data>
+  <data name="EVENT_PAGE_LABEL" xml:space="preserve">
+    <value>Event</value>
+  </data>
+  <data name="REGISTER" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="SUBSCRIBE" xml:space="preserve">
+    <value>Subsribe</value>
+  </data>
+  <data name="EVENT_GAMES_PAGE_TITLE" xml:space="preserve">
+    <value>Event Games</value>
+  </data>
+  <data name="UNREGISTER" xml:space="preserve">
+    <value>Unregister</value>
+  </data>
+  <data name="EVENT_LEADERBOARD" xml:space="preserve">
+    <value>Event leaderboard</value>
+  </data>
+  <data name="PLAYER_PAGE" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="ADDITIONAL" xml:space="preserve">
+    <value>Additionals</value>
+  </data>
+  <data name="GLOBAL_LEADERBOARD_PAGE_LABEL" xml:space="preserve">
+    <value>Global Leaderboard</value>
+  </data>
+  <data name="LOGIN_BUTTON_TITLE" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LOGOUT" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="REGISTRATION_I_PAGE_TITLE" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="REGISTRATION_I_BUTTON_TITLE" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="REGISTRATION_II_PAGE_TITLE" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="REGISTRATION_II_BUTTON_TITLE" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="RESET_PASSWORD_PAGE_TITLE" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="SAVE" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="DELETE_PLAYER_ACCOUNT" xml:space="preserve">
+    <value>Delete Account</value>
+  </data>
+  <data name="RESET_PLAYER_ACCOUNT" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="AUTHENTICATION_BUTTON_TITLE" xml:space="preserve">
+    <value>Authenticate</value>
+  </data>
+  <data name="AUTHENTICATION_PAGE_LABEL" xml:space="preserve">
+    <value>Authentication</value>
+  </data>
+  <data name="RESET" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="AUTHENTICATION_CODE_LABEL" xml:space="preserve">
+    <value>SMS-Code</value>
+  </data>
+  <data name="CITY_LABEL" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="FIRSTNAME_LABEL" xml:space="preserve">
+    <value>Firstname</value>
+  </data>
+  <data name="FORGOT_USERNAME_OR_PASSWORD_LABEL" xml:space="preserve">
+    <value>Forgot username or password</value>
+  </data>
+  <data name="PASSWORDS_DO_NOT_MATCH" xml:space="preserve">
+    <value>Passwords do not match</value>
+  </data>
+  <data name="PASSWORD_LENGTH" xml:space="preserve">
+    <value>Passwords must have 6 signs or more</value>
+  </data>
+  <data name="USERNAME_TAKEN" xml:space="preserve">
+    <value>Username already taken</value>
+  </data>
+  <data name="REGISTRATION_SUCCESSFUL" xml:space="preserve">
+    <value>Registration successful</value>
+  </data>
+  <data name="LASTNAME_LABEL" xml:space="preserve">
+    <value>Lastname</value>
+  </data>
+  <data name="MOBILE_NR_LABEL" xml:space="preserve">
+    <value>Mobile Nr</value>
+  </data>
+  <data name="PASSWORD_LABEL" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="POSTCODE_LABEL" xml:space="preserve">
+    <value>Postcode</value>
+  </data>
+  <data name="REGISTERED_TIME_LABEL" xml:space="preserve">
+    <value>Registered</value>
+  </data>
+  <data name="REPEAT_PASSWORD_LABEL" xml:space="preserve">
+    <value>Repeat password</value>
+  </data>
+  <data name="STREET_LABEL" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="STREET_NR_LABEL" xml:space="preserve">
+    <value>Street Nr</value>
+  </data>
+  <data name="TERMS_AND_CONDITIONS_LABEL" xml:space="preserve">
+    <value>AGB read</value>
+  </data>
+  <data name="USERNAME_LABEL" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="MY_GAMES_PAGE_TITLE" xml:space="preserve">
+    <value>My Games</value>
+  </data>
+  <data name="GAME_STATE_CONFIRM" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="SMS_CODE_WRONG_ERROR" xml:space="preserve">
+    <value>SMS code is not correct</value>
+  </data>
+  <data name="MY_DOMINATION_PAGE_TITLE" xml:space="preserve">
+    <value>My Domination</value>
+  </data>
+  <data name="GAME_LOADING_ERROR_MESSAGE" xml:space="preserve">
+    <value>Game load error</value>
+  </data>
+  <data name="MY_PROFILE_PAGE_TITLE" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="MY_STATS_PAGE_TITLE" xml:space="preserve">
+    <value>My Stats</value>
+  </data>
+  <data name="CREATE_LOCATION_BUTTON_CAPTION" xml:space="preserve">
+    <value>Add Location</value>
+  </data>
+  <data name="REGISTRATION_TEXT" xml:space="preserve">
+    <value>To verify your identity, we need you r number. Only this way we avoid abuse of our platform. We will not send you any SMS which is not necessary.</value>
+  </data>
+  <data name="AUTHENTIFICATION_TEXT" xml:space="preserve">
+    <value>Insert the code received by SMS to verify your identity.</value>
+  </data>
+  <data name="OPEN_AGB_PAGE_CAPTION" xml:space="preserve">
+    <value>Open Terms and Conditions</value>
+  </data>
+  <data name="FILE_TO_LARGE_ERROR" xml:space="preserve">
+    <value>Image is to large. Maximum resized image can be 100kb</value>
+  </data>
+  <data name="FEATURE_NOT_ENABLED_EXCEPTION" xml:space="preserve">
+    <value>App does not have location feature enabled</value>
+  </data>
+  <data name="FEATURE_NOT_SUPPORTED_EXCEPTION" xml:space="preserve">
+    <value>Location feature not supported by this device</value>
+  </data>
+  <data name="GPS_LABEL" xml:space="preserve">
+    <value>GPS</value>
+  </data>
+  <data name="LOCATION_NEEDED_BODY_TEXT_DIALOG" xml:space="preserve">
+    <value>Current location needed for distance calculations</value>
+  </data>
+  <data name="LOCATION_NEEDED_TITLE_DIALOG" xml:space="preserve">
+    <value>Location needed</value>
+  </data>
+  <data name="LOCATION_NEEDED_WARNING_BODY_DIALOG" xml:space="preserve">
+    <value>Location feature not permitted. Results based on distances can not be shown.</value>
+  </data>
+  <data name="LOGIN_ERROR_EXCEPTION_MESSAGE" xml:space="preserve">
+    <value>Login error</value>
+  </data>
+  <data name="LOGIN_SUCCES_MESSAGE" xml:space="preserve">
+    <value>Login successful</value>
+  </data>
+  <data name="NOT_POSSIBLE_USE_LOCATION_FEATURE_EXCEPTION" xml:space="preserve">
+    <value>Not possible to use location feature</value>
+  </data>
+  <data name="PASSWORD_RESET_ERROR_MESSAGE" xml:space="preserve">
+    <value>Password reset error</value>
+  </data>
+  <data name="PASSWORD_RESET_MESSAGE" xml:space="preserve">
+    <value>Password reset</value>
+  </data>
+  <data name="PERMISSION_EXCEPTION" xml:space="preserve">
+    <value>App does not have permission to use location feature</value>
+  </data>
+  <data name="PHONE_NUMBER_NOT_REGISTERED_MESSAGE" xml:space="preserve">
+    <value>Phone number not registered</value>
+  </data>
+  <data name="PICTURE_LABEL" xml:space="preserve">
+    <value>Pick picture</value>
+  </data>
+  <data name="SPORT_TEXT_LABEL" xml:space="preserve">
+    <value>Sport</value>
+  </data>
+  <data name="ADD_ADDRESS_LABEL" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="SUGGESTION_1" xml:space="preserve">
+    <value>Suggestion 1</value>
+  </data>
+  <data name="SUGGESTION_2" xml:space="preserve">
+    <value>Suggestion 2</value>
+  </data>
+  <data name="SUGGESTION_3" xml:space="preserve">
+    <value>Suggestion 3</value>
+  </data>
+  <data name="SUGGESTION_PAGE_USER_INFO_TEXT" xml:space="preserve">
+    <value>To increase chance of an appointment, enter up to 3 different suggestions</value>
+  </data>
+  <data name="UNKNOWN_PLAYER_LABEL" xml:space="preserve">
+    <value>???</value>
+  </data>
+  <data name="ANYONE" xml:space="preserve">
+    <value>Anyone</value>
+  </data>
+  <data name="VERSUS_LABEL" xml:space="preserve">
+    <value>vs</value>
+  </data>
+  <data name="OPPONENT" xml:space="preserve">
+    <value>Opponent</value>
+  </data>
+  <data name="PLAYER_DELETED_MESSAGE" xml:space="preserve">
+    <value>Player deleted</value>
+  </data>
+  <data name="PLAYER_DELETE_CONFIRM_MESSAGE" xml:space="preserve">
+    <value>You are going to delete the account.</value>
+  </data>
+  <data name="ABOUT_COPYRIGHT" xml:space="preserve">
+    <value>copyright by Svoboda Zaleta KIG</value>
+  </data>
+  <data name="ABOUT_SUPPORT" xml:space="preserve">
+    <value>support:</value>
+  </data>
+  <data name="ABOUT_TEXT" xml:space="preserve">
+    <value>Location Domination, short Lodo, is the gamified platform for Glory, Honor and Fun. </value>
+  </data>
+  <data name="ABOUT_VERSION" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="EVENT_RECORD_RESULT_NOT_REGISTERED_MESSAGE" xml:space="preserve">
+    <value>Register to add a result</value>
+  </data>
+  <data name="CANNOT_OPEN_URL_LABEL" xml:space="preserve">
+    <value>Can not open url:</value>
+  </data>
+  <data name="LOGGED_OUT_MESSAGE" xml:space="preserve">
+    <value>Logged out</value>
+  </data>
+  <data name="GAME_CREATE_DELAY_LIMIT_MESSAGE" xml:space="preserve">
+    <value>Game can be created every 10 min</value>
+  </data>
+  <data name="GAME_RESULT_DELAY_LIMIT_MESSAGE" xml:space="preserve">
+    <value>Result can be recorded every 10 min</value>
+  </data>
+  <data name="EMAIL_NOT_SUPPORTED_ON_DEVICE" xml:space="preserve">
+    <value>Email is not supported on this device</value>
+  </data>
+  <data name="WAIT_FOR_OPPONENT_APPROVAL" xml:space="preserve">
+    <value>Result recorded. Wait for the approval of the opponent to get your won points.</value>
+  </data>
+  <data name="LOGIN_WRONG_USERNAME_PASSWORD_MESSAGE" xml:space="preserve">
+    <value>Wrong username or password</value>
+  </data>
+  <data name="TAKE_PHOTO" xml:space="preserve">
+    <value>Take photo</value>
+  </data>
+  <data name="NO_CAMERA_MESSAGE" xml:space="preserve">
+    <value>No camera available</value>
+  </data>
+  <data name="NO_CAMERA_TITLE" xml:space="preserve">
+    <value>No camera</value>
+  </data>
+  <data name="ROTATE_IMAGE" xml:space="preserve">
+    <value>Rotate</value>
+  </data>
+  <data name="LOCATION_CANNOT_BE_CREATED" xml:space="preserve">
+    <value>Location can not be created. Check data.</value>
+  </data>
+  <data name="INVALID_PICTURE" xml:space="preserve">
+    <value>Invalid image or image format.</value>
+  </data>
+  <data name="TIE_SCORE_NOT_POSSIBLE" xml:space="preserve">
+    <value>A tie is not possible</value>
+  </data>
+  <data name="MAP_ONLY_OPEN_LOACTIONS_GAMES" xml:space="preserve">
+    <value>Only open games </value>
+  </data>
+  <data name="TOTAL_POINTS_SELECT_FILTER" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="CORRECT_RESULT_BUTTON_CAPTION" xml:space="preserve">
+    <value>Correct</value>
+  </data>
+  <data name="CORRECT_RESULT_PAGE_TITLE" xml:space="preserve">
+    <value>Correct result</value>
+  </data>
+  <data name="CREATE_GAME_IN_FUTURE_WARNING" xml:space="preserve">
+    <value>Games can only be created in the future</value>
+  </data>
+  <data name="GAME_RECORD_RESULT_NOT_EXECUTED_WARNING" xml:space="preserve">
+    <value>Can not enter result for not played game</value>
+  </data>
+  <data name="OPEN" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="PLEASE_ALLOW_LOCATION_PERMISSION" xml:space="preserve">
+    <value>Please allow location permission to post result.</value>
+  </data>
+  <data name="PLEASE_PROVIDE_VALID_LOCATION" xml:space="preserve">
+    <value>Your location is not valid.</value>
+  </data>
+  <data name="GET_CLOSER" xml:space="preserve">
+    <value>Get closer - recording result is not possible if you are too far away.</value>
+  </data>
+</root>
