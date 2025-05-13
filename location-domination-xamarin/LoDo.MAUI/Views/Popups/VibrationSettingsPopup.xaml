@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<mopups:PopupPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:custom="clr-namespace:LoDo.MAUI.Views.Related.Controls"
+    x:Class="LoDo.MAUI.Views.Popups.VibrationSettingsPopup">
+     <Grid RowDefinitions="*,0.4*,*">
+         <Grid Grid.RowSpan="3" x:Name="PopupBackground" Opacity="1">
+             <Grid Opacity="0.2" BackgroundColor="#153C64" Grid.RowSpan="3"/>      
+         </Grid>
+         <Border BackgroundColor="#E1E7E0" Margin="30,0" Grid.Row="1">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20" />
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow
+                    Offset="0,5"
+                    Brush="Gray"
+                    Radius="5"
+                    Opacity="1">
+                </Shadow>
+            </Border.Shadow>
+            <Grid
+                Padding="10,10,10,10"
+                RowDefinitions="*,2.5,*"
+                RowSpacing="5"
+                VerticalOptions="Fill">
+                <Label 
+                    Grid.Row="0"
+                    Text="Vibration" 
+                    FontSize="20" 
+                    FontAttributes="Bold" 
+                    FontFamily="RalewayRegular" 
+                    TextColor="#153C64"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"/>
+                <Rectangle 
+                    Grid.Row="1" 
+                    Margin="15,0"
+                    MaximumHeightRequest="2"
+                    VerticalOptions="Fill"
+                    BackgroundColor="#2F6D80"/>
+                <Grid ColumnDefinitions="6*,*" Grid.Row="2"  Margin="25,0">
+                    <Label 
+                        Grid.Column="0"
+                        Text="Vibration on/off" 
+                        FontSize="20" 
+                        FontAttributes="Bold" 
+                        FontFamily="RalewayRegular" 
+                        TextColor="#2F6D80"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Start"/>
+                  <custom:BlueSwitch Grid.Column="1" Scale="0.7"/>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</mopups:PopupPage>

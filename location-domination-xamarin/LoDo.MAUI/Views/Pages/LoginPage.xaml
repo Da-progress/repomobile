@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             xmlns:viewmodels="clr-namespace:LoDo.MAUI.ViewModels"
+             x:DataType="viewmodels:LoginPageViewModel"
+             xmlns:customanim="clr-namespace:LoDo.MAUI.Animations.TriggerActions"
+             BackgroundColor="#153C64"
+             Shell.NavBarIsVisible="False"
+             x:Class="LoDo.MAUI.Views.Pages.LoginPage">
+    <ContentPage.Content>
+        <Grid>
+            <Image Source="page_pat_light" Margin="0,20" Aspect="Fill" />
+            <Grid RowDefinitions="*,2.1*,*">
+                <Border BackgroundColor="#E1E7E0" Margin="30,0" Grid.Row="1">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow
+                            Offset="0,5"
+                            Brush="Black"
+                            Radius="5"
+                            Opacity="0.25">
+                        </Shadow>
+                    </Border.Shadow>
+                    <Grid
+                        Padding="20,25,20,25"
+                        RowDefinitions="1.5*,1.2*,1.2*,auto,*,auto"
+                        RowSpacing="10"
+                        VerticalOptions="Fill">
+                        <Grid Grid.Row="0">
+                            <VerticalStackLayout VerticalOptions="Start">
+                                <Label
+                                    Text="Hello!"
+                                    FontSize="32"
+                                    FontAttributes="Bold"
+                                    FontFamily="RalewayRegular"
+                                    TextColor="#153C64"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center" />
+                                <Label
+                                    Text="Let's get started"
+                                    FontSize="24"
+                                    FontAttributes="Bold"
+                                    FontFamily="RalewayRegular"
+                                    TextColor="#153C64"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <VerticalStackLayout Spacing="5">
+                                <Label
+                                    Grid.Column="1"
+                                    Text="Phone number"
+                                    FontSize="18"
+                                    TextColor="#2F6D80"
+                                    FontFamily="RalewayRegular"
+                                    Margin="5,0,0,0"
+                                    VerticalOptions="Start"
+                                    HorizontalOptions="Start"
+                                    FontAttributes="Bold" />
+                                <Border Stroke="#2F6D80" HeightRequest="35" x:Name="EmailInput" Padding="5,0,0,-5">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10"></RoundRectangle>
+                                    </Border.StrokeShape>
+                                    <Entry
+                                        VerticalOptions="End"
+                                        Keyboard="{x:Static Keyboard.Telephone}"
+                                        TextColor="#153C64"
+                                        Text="{Binding RegistrationModel.PhoneNumber}"
+                                        BackgroundColor="Aquamarine"
+                                        m:DynamicTint.BackgroundColorOpacity="0.5"
+                                        FontSize="16"
+                                        FontFamily="RalewayRegular">
+                                        <Entry.Triggers>
+                                            <EventTrigger Event="Focused">
+                                                <customanim:AnimateDoubleByRef
+                                                    TargetViewName="{x:Reference EmailInput}"
+                                                    TargetProperty="Border.StrokeThickness"
+                                                    From="1"
+                                                    To="1.5"
+                                                    Duration="300"
+                                                    Easing="BounceOut" />
+                                            </EventTrigger>
+                                            <EventTrigger Event="Unfocused">
+                                                <customanim:AnimateDoubleByRef
+                                                    TargetViewName="{x:Reference EmailInput}"
+                                                    TargetProperty="Border.StrokeThickness"
+                                                    From="1.5"
+                                                    To="1"
+                                                    Duration="300"
+                                                    Easing="BounceOut" />
+                                            </EventTrigger>
+                                        </Entry.Triggers>
+                                    </Entry>
+                                </Border>
+                            </VerticalStackLayout>
+                        </Grid>
+                        <Grid Grid.Row="2" ColumnSpacing="15">
+                            <VerticalStackLayout Spacing="5">
+                                <Label
+                                    Grid.Column="1"
+                                    Text="Password"
+                                    FontSize="18"
+                                    TextColor="#2F6D80"
+                                    FontFamily="RalewayRegular"
+                                    Margin="5,0,0,0"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Start"
+                                    FontAttributes="Bold" />
+                                <Grid
+                                    ColumnDefinitions="9*,*,0.5*">
+                                    <Border
+                                        Stroke="#2F6D80"
+                                        HeightRequest="35"
+                                        x:Name="PasswordInput"
+                                        Padding="5,0,0,-5"
+                                        Grid.ColumnSpan="3">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="10"></RoundRectangle>
+                                        </Border.StrokeShape>
+                                        <Entry
+                                            VerticalOptions="End"
+                                            TextColor="#153C64"
+                                            Text="{Binding RegistrationModel.Password}"
+                                            Keyboard="{x:Static Keyboard.Default}"
+                                            BackgroundColor="Aquamarine"
+                                            IsPassword="True"
+                                            x:Name="PassInput"
+                                            m:DynamicTint.BackgroundColorOpacity="0.5"
+                                            FontSize="16"
+                                            FontFamily="RalewayRegular">
+                                            <Entry.Triggers>
+                                                <EventTrigger Event="Focused">
+                                                    <customanim:AnimateDoubleByRef
+                                                        TargetViewName="{x:Reference PasswordInput}"
+                                                        TargetProperty="Border.StrokeThickness"
+                                                        From="1"
+                                                        To="1.5"
+                                                        Duration="300"
+                                                        Easing="BounceOut" />
+                                                </EventTrigger>
+                                                <EventTrigger Event="Unfocused">
+                                                    <customanim:AnimateDoubleByRef
+                                                        TargetViewName="{x:Reference PasswordInput}"
+                                                        TargetProperty="Border.StrokeThickness"
+                                                        From="1.5"
+                                                        To="1"
+                                                        Duration="300"
+                                                        Easing="BounceOut" />
+                                                </EventTrigger>
+                                            </Entry.Triggers>
+                                        </Entry>
+                                    </Border>
+                                    <Grid Grid.Column="1">
+                                        <Button Pressed="PassButtonPressed" Released="PassButtonReleased" Opacity="0" />
+                                        <Image HorizontalOptions="Start">
+                                            <Image.Source>
+                                                <FontImageSource
+                                                    FontFamily="MaterialOutlined"
+                                                    Glyph="{x:Static m:MaterialTwoTone.Visibility}"
+                                                    Size="25"
+                                                    Color="#2F6D80" />
+                                            </Image.Source>
+                                        </Image>
+                                    </Grid>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <Grid Grid.Row="3" RowDefinitions="*,*">
+                            <Label
+                                Text="Forgot password?"
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                FontFamily="RalewayRegular"
+                                TextColor="#153C64"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Start">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"></TapGestureRecognizer>
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Label
+                                Grid.Row="1"
+                                Text="{Binding ErrorRegText}"
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                FontFamily="RalewayRegular"
+                                TextColor="#941716"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Start" />
+
+                        </Grid>
+                        <Button BackgroundColor="#153C64" Grid.Row="4" VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                FontSize="20"
+                                Command="{Binding LoginCommand}"
+                                Padding="5"
+                                WidthRequest="118"
+                                FontAttributes="Bold"
+                                FontFamily="RalewayRegular"
+                                TextColor="#E1E7E0"
+                                CornerRadius="7"
+                                Text="Sign in" />
+                        <HorizontalStackLayout Grid.Row="5" VerticalOptions="Center" HorizontalOptions="Center"
+                                               Spacing="5">
+                            <Label
+                                Text="Don't have an account?"
+                                FontSize="16"
+                                FontFamily="RalewayRegular"
+                                TextColor="#153C64"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Center" />
+                            <Label
+                                Text="Sing up"
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                FontFamily="RalewayRegular"
+                                TextColor="#2F6D80"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Center" />
+                        </HorizontalStackLayout>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

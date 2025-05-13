@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:animations="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"
+             x:Class="LoDo.MAUI.Views.Related.ShellHeaderView">
+    <Grid BackgroundColor="Transparent" x:Name="ContainerGrid" RowDefinitions="*,*" VerticalOptions="Center" >
+        <Grid>
+            <Border VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2F6D80">
+                <Border.StrokeShape>
+                    <Ellipse />
+                </Border.StrokeShape>
+                <Image HeightRequest="100" WidthRequest="100" Aspect="Fill" x:Name="AvatarImage" />
+            </Border>
+        </Grid>
+        <Grid RowDefinitions="2*,*" Grid.Row="1">
+            <VerticalStackLayout>
+                <Label
+                    Text="Welcome, User!"
+                    FontSize="24"
+                    x:Name="GreetingsLabel"
+                    FontAttributes="Bold"
+                    FontFamily="RalewayRegular"
+                    TextColor="#153C64"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center" />
+                <Label
+                    Text="Registered on 19.04.2024"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    FontFamily="RalewayRegular"
+                    x:Name="DateLabel"
+                    TextColor="#2F6D80"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentView>

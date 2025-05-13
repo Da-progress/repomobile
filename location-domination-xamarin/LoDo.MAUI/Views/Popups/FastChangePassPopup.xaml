@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mopups:PopupPage
+    x:Class="LoDo.MAUI.Views.Popups.FastChangePassPopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mct="clr-namespace:CommunityToolkit.Maui.Core;assembly=CommunityToolkit.Maui.Core"
+    xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    Background="#B0000000"
+    CloseWhenBackgroundIsClicked="True">
+    <Border HeightRequest="200" WidthRequest="250">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="20" />
+        </Border.StrokeShape>
+        <Grid
+            Padding="10,10,10,0"
+            RowDefinitions="auto,auto,auto"
+            RowSpacing="5"
+            VerticalOptions="Center">
+            <Label
+                FontSize="20"
+                HorizontalTextAlignment="Center"
+                Style="{DynamicResource PopupLabel}"
+                Text="Enter your new password" />
+            <Border
+                Grid.Row="1"
+                HeightRequest="45"
+                Style="{DynamicResource InputBorder}">
+                <Entry
+                    IsPassword="False"
+                    Keyboard="Default"
+                    Placeholder="New password"
+                    Style="{DynamicResource CustomEntry}" />
+            </Border>
+            <Button
+                Grid.Row="2"
+                Margin="5"
+                Style="{DynamicResource PageActionButton}"
+                Text="Submit" />
+        </Grid>
+    </Border>
+</mopups:PopupPage>

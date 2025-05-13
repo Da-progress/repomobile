@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LoDo.MAUI.Views.Pages.ProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodel="clr-namespace:LoDo.MAUI.ViewModels"
+    xmlns:animations="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"
+    x:DataType="viewmodel:ProfilePageViewModel"
+    BackgroundColor="#E1E7E0"
+    Shell.BackgroundColor="#E1E7E0"
+    Shell.NavBarHasShadow="True"
+    Shell.TitleColor="#2F6D80">
+    <Shell.TitleView>
+        <Grid VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="Profile"
+                   Style="{x:StaticResource MyCustomNavHeader}">
+
+            </Label>
+        </Grid>
+    </Shell.TitleView>
+    <Grid Padding="20,30" RowSpacing="40" RowDefinitions="2*,3*">
+        <Grid RowDefinitions="*,*">
+            <Grid>
+                <Border VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2F6D80">
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Image HeightRequest="100" WidthRequest="100"  Aspect="Fill" x:Name="AvatarImage" />
+                </Border>
+            </Grid>
+            <Grid RowDefinitions="2*,*" Grid.Row="1">
+                <VerticalStackLayout>
+                    <Label 
+                        Text="{Binding Greeting}" 
+                        FontSize="24" 
+                        FontAttributes="Bold" 
+                        FontFamily="RalewayRegular" 
+                        TextColor="#153C64"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"/>
+                    <Label 
+                        Text="{Binding RedData}" 
+                        FontSize="20" 
+                        FontAttributes="Bold" 
+                        FontFamily="RalewayRegular" 
+                        TextColor="#2F6D80"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+                <Button
+                    Grid.Row="1"
+                    Text="Edit"
+                    Padding="5"
+                    Command="{Binding GoToEditProfileCommand}"
+                    FontFamily="RalewayRegular"
+                    TextColor="#E1E7E0"
+                    FontSize="20"
+                    CornerRadius="7"
+                    MinimumWidthRequest="100"
+                    FontAttributes="Bold"
+                    VerticalOptions="Center"
+                    BackgroundColor="#153C64"
+                    HorizontalOptions="Center">
+                        <Button.Triggers>
+                            <EventTrigger Event="Pressed">
+                                <animations:AnimateDouble From="1" To="0.9" TargetProperty="Button.Scale" Duration="300" Easing="Linear"/>
+                            </EventTrigger>
+                            <EventTrigger Event="Released">
+                                <animations:AnimateDouble From="0.9" To="1" TargetProperty="Button.Scale" Duration="300" Easing="Linear"/>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+            </Grid>
+        </Grid>
+        <Grid 
+            Grid.Row="1"
+            RowDefinitions="6*,2*">
+            <Grid RowDefinitions="*,*,*,*,*,*,*" RowSpacing="7">
+                <Grid RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10" x:Name="FirstRow">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToStatsCommand}"/>
+                    </Grid.GestureRecognizers>
+                    <Border 
+                            BackgroundColor="#153C64"
+                            Padding="3">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="MaterialOutlined"
+                                    Glyph="{x:Static m:MaterialRegular.Leaderboard}"
+                                    Size="50"
+                                    Color="White" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    <Label 
+                        Grid.Column="1" 
+                        Text="Statistics" 
+                        FontSize="20" 
+                        TextColor="#2F6D80" 
+                        FontFamily="RalewayRegular" 
+                        VerticalOptions="Start" 
+                        HorizontalOptions="Start"
+                        FontAttributes="Bold"/>
+                    <Rectangle 
+                        Grid.Row="1"  
+                        Grid.Column="1"
+                        VerticalOptions="Fill"
+                        BackgroundColor="#2F6D80"/>
+                </Grid>
+                <Grid Grid.Row="1" RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToGamesCommand}"/>
+                    </Grid.GestureRecognizers>
+                    <Border 
+                        BackgroundColor="#153C64"
+                        Padding="3">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="MaterialOutlined"
+                                    Glyph="{x:Static m:MaterialRegular.Gamepad}"
+                                    Size="50"
+                                    Color="White" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    <Label 
+                        Grid.Column="1" 
+                        Text="Games" 
+                        FontSize="20" 
+                        TextColor="#2F6D80" 
+                        FontFamily="RalewayRegular" 
+                        VerticalOptions="Start" 
+                        HorizontalOptions="Start"
+                        FontAttributes="Bold"/>
+                    <Rectangle 
+                        Grid.Row="1"  
+                        Grid.Column="1"
+                        VerticalOptions="Fill"
+                        BackgroundColor="#2F6D80"/>
+                </Grid>
+                <Grid Grid.Row="2" RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10">
+                    <Border 
+                        BackgroundColor="#153C64"
+                        Padding="3">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="MaterialOutlined"
+                                    Glyph="{x:Static m:MaterialRegular.People}"
+                                    Size="50"
+                                    Color="White" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    <Label 
+                        Grid.Column="1" 
+                        Text="Domination" 
+                        FontSize="20" 
+                        TextColor="#2F6D80" 
+                        FontFamily="RalewayRegular" 
+                        VerticalOptions="Start" 
+                        HorizontalOptions="Start"
+                        FontAttributes="Bold"/>
+                    <Rectangle 
+                        Grid.Row="1"  
+                        Grid.Column="1"
+                        VerticalOptions="Fill"
+                        MaximumHeightRequest="2"
+                        BackgroundColor="#2F6D80"/>
+                </Grid>
+                <Grid Grid.Row="3" RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10">
+                    <Border 
+                        BackgroundColor="#153C64"
+                        Padding="3">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="MaterialOutlined"
+                                    Glyph="{x:Static m:MaterialRegular.Language}"
+                                    Size="50"
+                                    Color="White" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    <Label 
+                        Grid.Column="1" 
+                        Text="Language" 
+                        FontSize="20" 
+                        TextColor="#2F6D80" 
+                        FontFamily="RalewayRegular" 
+                        VerticalOptions="Start" 
+                        HorizontalOptions="Start"
+                        FontAttributes="Bold">
+                        <Label.Behaviors>
+                            <toolkit:TouchBehavior
+                                Command="{Binding }"
+                                DefaultBackgroundColor="Transparent"
+                                DefaultScale="1"
+                                PressedScale="0.95"
+                                DefaultAnimationDuration="400"
+                                DefaultAnimationEasing="{x:Static Easing.Linear}"/>
+                        </Label.Behaviors>
+                    </Label>
+                    <Rectangle 
+                        Grid.Row="1"  
+                        Grid.Column="1"
+                        MaximumHeightRequest="2"
+                        VerticalOptions="Fill"
+                        BackgroundColor="#2F6D80"/>
+                </Grid>
+                <Grid Grid.Row="4" RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10">
+                    <Border 
+                        BackgroundColor="#153C64"
+                        Padding="3">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="MaterialOutlined"
+                                    Glyph="{x:Static m:MaterialRegular.Password}"
+                                    Size="50"
+                                    Color="White" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    <Label 
+                        Grid.Column="1" 
+                        Text="Change password" 
+                        FontSize="20" 
+                        TextColor="#2F6D80" 
+                        FontFamily="RalewayRegular" 
+                        VerticalOptions="Start" 
+                        HorizontalOptions="Start"
+                        FontAttributes="Bold">
+                        <Label.Behaviors>
+                            <toolkit:TouchBehavior
+                                Command="{Binding ChangePasswordCommand}"
+                                DefaultBackgroundColor="Transparent"
+                                DefaultScale="1"
+                                PressedScale="0.95"
+                                DefaultAnimationDuration="400"
+                                DefaultAnimationEasing="{x:Static Easing.Linear}"/>
+                        </Label.Behaviors>
+                    </Label>
+                    <Rectangle 
+                        Grid.Row="1"  
+                        MaximumHeightRequest="2"
+                        Grid.Column="1"
+                        BackgroundColor="#2F6D80"/>
+                </Grid>
+                <Grid Grid.Row="5" RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10">
+                    <Border 
+                        BackgroundColor="#153C64"
+                        Padding="3">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="MaterialOutlined"
+                                    Glyph="{x:Static m:MaterialRegular.Logout}"
+                                    Size="50"
+                                    Color="White" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    <Label 
+                        Grid.Column="1" 
+                        Text="Log out" 
+                        FontSize="20" 
+                        TextColor="#2F6D80" 
+                        FontFamily="RalewayRegular" 
+                        VerticalOptions="Start" 
+                        HorizontalOptions="Start"
+                        FontAttributes="Bold">
+                        <Label.Behaviors>
+                            <toolkit:TouchBehavior
+                                Command="{Binding LogoutCommand}"
+                                DefaultBackgroundColor="Transparent"
+                                DefaultScale="1"
+                                PressedScale="0.95"
+                                DefaultAnimationDuration="400"
+                                DefaultAnimationEasing="{x:Static Easing.Linear}"/>
+                        </Label.Behaviors>
+                    </Label>
+                    <Rectangle 
+                        Grid.Row="1"  
+                        Grid.Column="1"
+                        MaximumHeightRequest="2"
+                        VerticalOptions="Fill"
+                        BackgroundColor="#2F6D80"/>
+                </Grid>
+                <Grid Grid.Row="6" RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10">
+                    <Border 
+                        BackgroundColor="#153C64"
+                        Padding="3">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="MaterialOutlined"
+                                    Glyph="{x:Static m:MaterialRegular.Delete}"
+                                    Size="50"
+                                    Color="White" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    <Label 
+                        Grid.Column="1" 
+                        Text="Delete account" 
+                        FontSize="20" 
+                        TextColor="#2F6D80" 
+                        FontFamily="RalewayRegular" 
+                        VerticalOptions="Start" 
+                        HorizontalOptions="Start"
+                        FontAttributes="Bold">
+                        <Label.Behaviors>
+                            <toolkit:TouchBehavior
+                                Command="{Binding DeleteAccountCommand}"
+                                DefaultBackgroundColor="Transparent"
+                                DefaultScale="1"
+                                PressedScale="0.95"
+                                DefaultAnimationDuration="400"
+                                DefaultAnimationEasing="{x:Static Easing.Linear}"/>
+                        </Label.Behaviors>
+                    </Label>
+                    <Rectangle 
+                        Grid.Row="1"  
+                        MaximumHeightRequest="2"
+                        VerticalOptions="Fill"
+                        Grid.Column="1"
+                        BackgroundColor="#2F6D80"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

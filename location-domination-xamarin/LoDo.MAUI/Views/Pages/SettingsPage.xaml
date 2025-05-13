@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             xmlns:animations="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"
+             xmlns:viewmodels="clr-namespace:LoDo.MAUI.ViewModels"
+             x:Class="LoDo.MAUI.Views.Pages.SettingsPage"
+             x:DataType="viewmodels:SettingsPageViewModel"
+             BackgroundColor="#E1E7E0"
+             Shell.BackgroundColor="#E1E7E0"
+             Shell.NavBarHasShadow="True"
+             Shell.TitleColor="#2F6D80"
+             Title="Settings">
+    <Shell.TitleView>
+        <Grid VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="Settings"
+                   Style="{x:StaticResource MyCustomNavHeader}">
+
+            </Label>
+        </Grid>
+    </Shell.TitleView>
+    <Grid Padding="20,30" RowSpacing="40" RowDefinitions="2*,3*">
+        <Grid RowDefinitions="*,*">
+            <Grid>
+                <Border VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2F6D80">
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Image HeightRequest="100" WidthRequest="100"  Aspect="Fill" x:Name="AvatarImage" />
+                </Border>
+            </Grid>
+            <Grid RowDefinitions="2*,*" Grid.Row="1">
+                <VerticalStackLayout>
+                    <Label 
+                        Text="{Binding Greeting}" 
+                        FontSize="24" 
+                        FontAttributes="Bold" 
+                        FontFamily="RalewayRegular" 
+                        TextColor="#153C64"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"/>
+                    <Label 
+                        Text="{Binding RedData}" 
+                        FontSize="20" 
+                        FontAttributes="Bold" 
+                        FontFamily="RalewayRegular" 
+                        TextColor="#2F6D80"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+        <Grid
+            Grid.Row="1"
+            RowDefinitions="6*,2*">
+            <Grid RowDefinitions="*,*,*,*,*,*,*" RowSpacing="7">
+                <Grid RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10" x:Name="FirstRow">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenNotificationCommand}"></TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                    <Border
+                        BackgroundColor="#153C64"
+                        Padding="3">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5" />
+                        </Border.StrokeShape>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="MaterialOutlined"
+                                    Glyph="{x:Static m:MaterialRegular.Notifications_on}"
+                                    Size="50"
+                                    Color="White" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    <Label
+                        Grid.Column="1"
+                        Text="Notifications"
+                        FontSize="20"
+                        TextColor="#2F6D80"
+                        FontFamily="RalewayRegular"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Start"
+                        FontAttributes="Bold" />
+                    <Rectangle
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        VerticalOptions="Fill"
+                        BackgroundColor="#2F6D80" />
+                </Grid>
+                <Grid Grid.Row="1" RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10">
+                     <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenVibroCommand}"></TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                    <Border
+                        BackgroundColor="#153C64"
+                        Padding="3">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5" />
+                        </Border.StrokeShape>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="MaterialOutlined"
+                                    Glyph="{x:Static m:MaterialRegular.Vibration}"
+                                    Size="50"
+                                    Color="White" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    <Label
+                        Grid.Column="1"
+                        Text="Vibration"
+                        FontSize="20"
+                        TextColor="#2F6D80"
+                        FontFamily="RalewayRegular"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Start"
+                        FontAttributes="Bold" />
+                    <Rectangle
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        VerticalOptions="Fill"
+                        BackgroundColor="#2F6D80" />
+                </Grid>
+                <Grid Grid.Row="2" RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenLanguageCommand}"></TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                    <Border
+                        BackgroundColor="#153C64"
+                        Padding="3">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5" />
+                        </Border.StrokeShape>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="MaterialOutlined"
+                                    Glyph="{x:Static m:MaterialRegular.Language}"
+                                    Size="50"
+                                    Color="White" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    <Label
+                        Grid.Column="1"
+                        Text="Language"
+                        FontSize="20"
+                        TextColor="#2F6D80"
+                        FontFamily="RalewayRegular"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Start"
+                        FontAttributes="Bold" />
+                    <Rectangle
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        VerticalOptions="Fill"
+                        MaximumHeightRequest="2"
+                        BackgroundColor="#2F6D80" />
+                </Grid>
+                <Grid Grid.Row="3" RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SendFeedbackCommand}"></TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                    <Border
+                        BackgroundColor="#153C64"
+                        Padding="3">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5" />
+                        </Border.StrokeShape>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="MaterialOutlined"
+                                    Glyph="{x:Static m:MaterialRegular.Send_to_mobile}"
+                                    Size="50"
+                                    Color="White" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    <Label
+                        Grid.Column="1"
+                        Text="Send feedback"
+                        FontSize="20"
+                        TextColor="#2F6D80"
+                        FontFamily="RalewayRegular"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Start"
+                        FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                          
+                        </Label.GestureRecognizers>
+                        <Label.Behaviors>
+                            <toolkit:TouchBehavior
+                                Command="{Binding }"
+                                DefaultBackgroundColor="Transparent"
+                                DefaultScale="1"
+                                PressedScale="0.95"
+                                DefaultAnimationDuration="400"
+                                DefaultAnimationEasing="{x:Static Easing.Linear}" />
+                        </Label.Behaviors>
+                    </Label>
+                    <Rectangle
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        MaximumHeightRequest="2"
+                        VerticalOptions="Fill"
+                        BackgroundColor="#2F6D80" />
+                </Grid>
+                <Grid Grid.Row="4" RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenLanguageCommand}"></TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                    <Border
+                        BackgroundColor="#153C64"
+                        Padding="3">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5" />
+                        </Border.StrokeShape>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="MaterialRegular"
+                                    Glyph="{x:Static m:MaterialRegular.Book}"
+                                    Size="50"
+                                    Color="White" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    <Label
+                        Grid.Column="1"
+                        Text="Rules"
+                        FontSize="20"
+                        TextColor="#2F6D80"
+                        FontFamily="RalewayRegular"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Start"
+                        FontAttributes="Bold" />
+                    <Rectangle
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        VerticalOptions="Fill"
+                        MaximumHeightRequest="2"
+                        BackgroundColor="#2F6D80" />
+                </Grid>
+                <Grid Grid.Row="5" RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10">
+                </Grid>
+                <Grid Grid.Row="6" RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10">
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

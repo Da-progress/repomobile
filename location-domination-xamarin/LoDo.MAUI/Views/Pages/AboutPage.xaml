@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LoDo.MAUI.Views.Pages.AboutPage"
+             Title="About">
+    <Shell.TitleView>
+        <Grid VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="About"
+                   Style="{x:StaticResource MyCustomNavHeader}">
+
+            </Label>
+        </Grid>
+    </Shell.TitleView>
+    <Grid BackgroundColor="#E1E7E0">
+        <Image Source="page_pat" Aspect="AspectFill" />
+        <Grid RowDefinitions="*,3*,*">
+            <Border Style="{x:StaticResource PopupBorder}" Grid.Row="1" Margin="20,0">
+                <Grid RowDefinitions="60,*,auto,*" Padding="20,30">
+                    <Image Source="lo_do_transparent" VerticalOptions="Center" MaximumWidthRequest="60" />
+                    <Label Grid.Row="1" Text="About LoDo" FontSize="20" FontAttributes="Bold"
+                           FontFamily="RalewayRegular"
+                           VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="#153C64">
+                    </Label>
+                    <Grid Grid.Row="2">
+                        <Label VerticalOptions="Center"
+                               FontFamily="RalewayRegular" HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center" HorizontalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontSize="18" TextColor="#2F6D80" 
+                                          FontFamily="RalewayRegular"
+                                          Text="Location domination"
+                                          FontAttributes="Bold" />
+                                    <Span FontSize="18" TextColor="#2F6D80"
+                                          FontFamily="RalewayRegular"
+                                          Text=" connects people through physical activity." />
+                                    <Span FontSize="18" TextColor="#2F6D80"
+                                          Text="{x:Static system:Environment.NewLine}" />
+                                    <Span FontSize="10" TextColor="#2F6D80"
+                                          Text="{x:Static system:Environment.NewLine}" />
+                                    <Span FontSize="18" TextColor="#2F6D80"
+                                          FontFamily="RalewayRegular"
+                                          Text="Whether you're socializing, exploring new sports, or playing 
+to win, the gamified system rewards points for games, opponents, and locations. Enjoy free access to player
+and locations — fun and competition in one place!" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Grid>
+                    <Grid Row="4">
+                        <VerticalStackLayout VerticalOptions="End">
+                            <Label Text="Copyright by Svoboda Zaleta KIG" FontSize="14" TextColor="#153C64"
+                                   FontFamily="RalewayRegular"/>
+                            <Label Text="Version 1.0 released on 12.12.24" FontSize="14" TextColor="#153C64"
+                                   FontFamily="RalewayRegular"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</ContentPage>

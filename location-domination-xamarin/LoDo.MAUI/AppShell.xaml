@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Shell
+    x:Class="LoDo.MAUI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:icons="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
+    xmlns:local="clr-namespace:LoDo.MAUI.Views.Pages"
+    xmlns:views="clr-namespace:LoDo.MAUI.Views.Related"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    FlyoutBackground="#E1E7E0"
+    Shell.BackgroundColor="#E1E7E0"
+    Shell.FlyoutBackdrop="#50FFFFFF"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.ForegroundColor="#2F6D80"
+    Shell.NavBarHasShadow="True"
+    Shell.TabBarIsVisible="False"
+    Shell.Title="LODO"
+    Shell.TitleColor="#2F6D80">
+    <Shell.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#E1E7E0" StatusBarStyle="DarkContent" />
+    </Shell.Behaviors>
+    <Shell.FlyoutHeader>
+        <views:ShellHeaderView x:Name="ShellHeaderView" HeightRequest="300" />
+    </Shell.FlyoutHeader>
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10" HeightRequest="33"
+                  Margin="5,7,5,0">
+                <Border
+                    BackgroundColor="#153C64"
+                    Padding="3">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5" />
+                    </Border.StrokeShape>
+                    <Image>
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="MaterialOutlined"
+                                Glyph="{Binding Icon}"
+                                Size="50"
+                                Color="#E1E7E0" />
+                        </Image.Source>
+                    </Image>
+                </Border>
+                <Label
+                    Grid.Column="1"
+                    Text="{Binding Title}"
+                    FontSize="20"
+                    TextColor="#2F6D80"
+                    FontFamily="RalewayRegular"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Start"
+                    FontAttributes="Bold" />
+                <Rectangle
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    VerticalOptions="Fill"
+                    MaximumHeightRequest="2"
+                    BackgroundColor="#2F6D80" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10" HeightRequest="33"
+                  Margin="5,7,5,0">
+                <Border
+                    BackgroundColor="#153C64"
+                    Padding="3">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5" />
+                    </Border.StrokeShape>
+                    <Image>
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="MaterialOutlined"
+                                Glyph="{Binding Icon}"
+                                Size="50"
+                                Color="#E1E7E0" />
+                        </Image.Source>
+                    </Image>
+                </Border>
+                <Label
+                    Grid.Column="1"
+                    Text="{Binding Title}"
+                    FontSize="20"
+                    TextColor="#2F6D80"
+                    FontFamily="RalewayRegular"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Start"
+                    FontAttributes="Bold" />
+                <Rectangle
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    VerticalOptions="Fill"
+                    MaximumHeightRequest="2"
+                    BackgroundColor="#2F6D80" />
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+    <ShellContent
+        Title="Map"
+        ContentTemplate="{DataTemplate local:MapPage}"
+        Icon="{x:Static icons:MaterialOutlined.Map}"
+        Route="MapPage" />
+    <ShellContent
+        Title="Profile"
+        ContentTemplate="{DataTemplate local:ProfilePage}"
+        Icon="{x:Static icons:MaterialOutlined.Person}"
+        Route="ProfilePage" />
+    <ShellContent
+        Title="Events"
+        ContentTemplate="{DataTemplate local:EventsPage}"
+        Icon="{x:Static icons:MaterialOutlined.Event}"
+        Route="EventsPage" />
+    <ShellContent
+        Title="Leaderboard"
+        ContentTemplate="{DataTemplate local:LeaderBoardPage}"
+        Icon="{x:Static icons:MaterialOutlined.Wine_bar}"
+        Route="LeaderBoardPage" />
+
+    <ShellContent
+        Title="About"
+        ContentTemplate="{DataTemplate local:AboutPage}"
+        Icon="{x:Static icons:MaterialOutlined.Question_mark}"
+        Route="AboutPage" />
+    <ShellContent
+        Title="Settings"
+        ContentTemplate="{DataTemplate local:SettingsPage}"
+        Icon="{x:Static icons:MaterialOutlined.Settings}"
+        Route="SettingsPage" />
+    <MenuItem
+        IconImageSource="{x:Static icons:MaterialOutlined.Logout}"
+        Text="Log out"
+        Clicked="MenuItem_OnClicked">
+
+    </MenuItem>
+</Shell>

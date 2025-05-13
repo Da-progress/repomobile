@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             BackgroundColor="#E1E7E0"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:LoDo.MAUI.ViewModels"
+             xmlns:c="clr-namespace:GalleryCarousel;assembly=GalleryCarousel"
+             x:Name="This"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:processors="clr-namespace:PanCardView.Processors;assembly=PanCardView"
+             x:DataType="viewmodels:AddLocationPageViewModel"
+             x:Class="LoDo.MAUI.Views.Pages.AddLocationPage">
+    <Shell.TitleView>
+        <Grid VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="Add location"
+                   Style="{x:StaticResource MyCustomNavHeader}">
+
+            </Label>
+        </Grid>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid RowDefinitions="2*,3*">
+            <Grid>
+                <CarouselView
+                    ItemsSource="{Binding Sources}"
+                    PeekAreaInsets="80">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type Image}">
+                            <Border MaximumHeightRequest="250" MaximumWidthRequest="200"  Margin="-70,50"  BackgroundColor="#2F6D80">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20"/>
+                                </Border.StrokeShape>
+                                <Grid>
+                                <Grid.Behaviors>
+                                    <toolkit:TouchBehavior
+                                        Command="{ Binding Source={x:Reference This}, Path=BindingContext.AddImageCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </Grid.Behaviors>
+                                <Image Source="{Binding Source}"/>
+                            </Grid>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="CurrentItem">
+                                            <VisualState.Setters>
+                                                <Setter Property="Scale" Value="1.1" />
+                                                <Setter Property="StrokeShape">
+                                                    <RoundRectangle CornerRadius="15"/>
+                                                </Setter>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="PreviousItem">
+                                            <VisualState.Setters>
+                                                <Setter Property="Scale" Value="0.6" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="NextItem">
+                                            <VisualState.Setters>
+                                                <Setter Property="Scale" Value="0.6" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Border>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                    <CarouselView.Visual>
+                
+                    </CarouselView.Visual>
+                </CarouselView>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

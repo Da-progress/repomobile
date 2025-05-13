@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<mopups:PopupPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+    xmlns:triggerActions="clr-namespace:LoDo.MAUI.Animations.TriggerActions"
+    xmlns:viewmodels="clr-namespace:LoDo.MAUI.ViewModels.PopupViewModels"
+    xmlns:animations="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"
+    x:DataType="viewmodels:FeedbackPopupViewModel"
+    x:Class="LoDo.MAUI.Views.Popups.FeedbackPopup">
+    <Grid RowDefinitions="*,6*,*">
+        <Grid Grid.RowSpan="3" x:Name="PopupBackground" Opacity="1">
+            <Grid Opacity="0.2" BackgroundColor="#153C64" Grid.RowSpan="3" />
+        </Grid>
+        <Border BackgroundColor="#E1E7E0" Margin="30,0" Grid.Row="1">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20" />
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow
+                    Offset="0,5"
+                    Brush="Gray"
+                    Radius="5"
+                    Opacity="1">
+                </Shadow>
+            </Border.Shadow>
+            <Grid
+                Padding="10,20"
+                RowDefinitions="auto,auto,auto,*,*"
+                RowSpacing="20"
+                VerticalOptions="Fill">
+                <Label
+                    Grid.Row="0"
+                    Text="Your feedback matters!"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    FontFamily="RalewayRegular"
+                    TextColor="#153C64"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center" />
+                <Rectangle
+                    Grid.Row="1"
+                    Margin="15,0"
+                    MaximumHeightRequest="2"
+                    VerticalOptions="Fill"
+                    BackgroundColor="#2F6D80" />
+                <Grid RowDefinitions="auto,50" RowSpacing="10" Grid.Row="2">
+                    <Label
+                        Text="Let us know if you've encountered an issue or have ideas to improve the app."
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        FontFamily="RalewayRegular"
+                        TextColor="#2F6D80"
+                        VerticalTextAlignment="Start"
+                        HorizontalTextAlignment="Start" />
+                    <Grid Row="1" ColumnSpacing="10" ColumnDefinitions="*,*">
+                        <Border BackgroundColor="#153C64">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding UpdateSelectionCommand}" CommandParameter="feedback"/>
+                            </Border.GestureRecognizers>
+                            <Border.Triggers>
+                                <DataTrigger Binding="{Binding IsFeedback}" Value="true" TargetType="Border">
+                                    <DataTrigger.EnterActions>
+                                        <animations:AnimateColor TargetProperty="Border.BackgroundColor" From="#153C64" To="#2F6D80" Duration="500" Easing="Linear"/>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <animations:AnimateColor TargetProperty="Border.BackgroundColor" To="#153C64" From="#2F6D80" Duration="500" Easing="Linear"/>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Border.Triggers>
+                            <Label TextColor="#E1E7E0"
+                                   Text="Send feedback"
+                                   FontSize="15"
+                                   FontFamily="RalewayRegular"
+                                   FontAttributes="Bold"
+                                   Grid.Column="1"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center" />
+                        </Border>
+                        <Border BackgroundColor="#153C64" Grid.Column="1">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding UpdateSelectionCommand}" CommandParameter="bug"/>
+                            </Border.GestureRecognizers>
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <Border.Triggers>
+                                <DataTrigger Binding="{Binding IsBug}" Value="true" TargetType="Border">
+                                    <DataTrigger.EnterActions>
+                                        <animations:AnimateColor TargetProperty="Border.BackgroundColor" From="#153C64" To="#2F6D80" Duration="500" Easing="Linear"/>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <animations:AnimateColor TargetProperty="Border.BackgroundColor" To="#153C64" From="#2F6D80" Duration="500" Easing="Linear"/>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Border.Triggers>
+                            <Label TextColor="#E1E7E0"
+                                   Text="Report a bug"
+                                   FontSize="15"
+                                   FontFamily="RalewayRegular"
+                                   FontAttributes="Bold"
+                                   Grid.Column="1"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center" />
+                        </Border>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="3" RowSpacing="10" VerticalOptions="Start" Margin="0,-15,0,0"
+                      RowDefinitions="auto,auto">
+                    <Grid Grid.Row="0" ColumnSpacing="15">
+                        <VerticalStackLayout Spacing="5">
+                            <Label
+                                Grid.Column="1"
+                                Text="Name"
+                                FontSize="18"
+                                TextColor="#2F6D80"
+                                FontFamily="RalewayRegular"
+                                Margin="5,0,0,0"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Start"
+                                FontAttributes="Bold" />
+                            <Grid
+                                ColumnDefinitions="9*,*,0.5*">
+                                <Border
+                                    Stroke="#2F6D80"
+                                    HeightRequest="35"
+                                    x:Name="PasswordInput"
+                                    Padding="5,0,0,-5"
+                                    Grid.ColumnSpan="3">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10"></RoundRectangle>
+                                    </Border.StrokeShape>
+                                    <Entry
+                                        VerticalOptions="End"
+                                        TextColor="#153C64"
+                                        Text="{Binding Name}"
+                                        Keyboard="{x:Static Keyboard.Default}"
+                                        FontSize="16"
+                                        FontFamily="RalewayRegular">
+                                        <Entry.Triggers>
+                                            <EventTrigger Event="Focused">
+                                                <triggerActions:AnimateDoubleByRef
+                                                    TargetViewName="{x:Reference PasswordInput}"
+                                                    TargetProperty="Border.StrokeThickness"
+                                                    From="1"
+                                                    To="1.5"
+                                                    Duration="300"
+                                                    Easing="BounceOut" />
+                                            </EventTrigger>
+                                            <EventTrigger Event="Unfocused">
+                                                <triggerActions:AnimateDoubleByRef
+                                                    TargetViewName="{x:Reference PasswordInput}"
+                                                    TargetProperty="Border.StrokeThickness"
+                                                    From="1.5"
+                                                    To="1"
+                                                    Duration="300"
+                                                    Easing="BounceOut" />
+                                            </EventTrigger>
+                                        </Entry.Triggers>
+                                    </Entry>
+                                </Border>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Grid>
+                    <Grid Grid.Row="1" ColumnSpacing="15">
+                        <VerticalStackLayout Spacing="5">
+                            <Label
+                                Grid.Column="1"
+                                Text="Email"
+                                FontSize="18"
+                                TextColor="#2F6D80"
+                                FontFamily="RalewayRegular"
+                                Margin="5,0,0,0"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Start"
+                                FontAttributes="Bold" />
+                            <Grid
+                                ColumnDefinitions="9*,*,0.5*">
+                                <Border
+                                    Stroke="#2F6D80"
+                                    x:Name="EmailInput"
+                                    HeightRequest="35"
+                                    Padding="5,0,0,-5"
+                                    Grid.ColumnSpan="3">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10"></RoundRectangle>
+                                    </Border.StrokeShape>
+                                    <Entry
+                                        VerticalOptions="End"
+                                        TextColor="#153C64"
+                                        Text="{Binding EmailAddress}"
+                                        Keyboard="{x:Static Keyboard.Default}"
+                                        FontSize="16"
+                                        FontFamily="RalewayRegular">
+                                        <Entry.Triggers>
+                                            <EventTrigger Event="Focused">
+                                                <triggerActions:AnimateDoubleByRef
+                                                    TargetViewName="{x:Reference EmailInput}"
+                                                    TargetProperty="Border.StrokeThickness"
+                                                    From="1"
+                                                    To="1.5"
+                                                    Duration="300"
+                                                    Easing="BounceOut" />
+                                            </EventTrigger>
+                                            <EventTrigger Event="Unfocused">
+                                                <triggerActions:AnimateDoubleByRef
+                                                    TargetViewName="{x:Reference EmailInput}"
+                                                    TargetProperty="Border.StrokeThickness"
+                                                    From="1.5"
+                                                    To="1"
+                                                    Duration="300"
+                                                    Easing="BounceOut" />
+                                            </EventTrigger>
+                                        </Entry.Triggers>
+                                    </Entry>
+                                </Border>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="4" RowDefinitions="auto,*" Margin="0,-35,0,0">
+                    <VerticalStackLayout Spacing="5">
+                        <Label
+                            Text="Describe your issue or idea"
+                            FontSize="18"
+                            TextColor="#2F6D80"
+                            FontFamily="RalewayRegular"
+                            Margin="5,0,0,0"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Start"
+                            FontAttributes="Bold" />
+                        <Grid
+                            ColumnDefinitions="9*,*,0.5*">
+                            <Border
+                                Stroke="#2F6D80"
+                                HeightRequest="100"
+                                Padding="5"
+                                Grid.ColumnSpan="3">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10"></RoundRectangle>
+                                </Border.StrokeShape>
+                                <Editor
+                                    VerticalOptions="Fill"
+                                    TextColor="#153C64"
+                                    FontSize="16"
+                                    BackgroundColor="Transparent"
+                                    Text="{Binding Description}"
+                                    FontFamily="RalewayRegular">
+                                </Editor>
+                            </Border>
+                        </Grid>
+                    </VerticalStackLayout>
+                    <Button
+                        Grid.Row="1"
+                        Text="Submit"
+                        Padding="5"
+                        FontFamily="RalewayRegular"
+                        Command="{Binding SubmitCommand}"
+                        TextColor="#E1E7E0"
+                        FontSize="20"
+                        CornerRadius="7"
+                        MinimumWidthRequest="100"
+                        FontAttributes="Bold"
+                        VerticalOptions="Center"
+                        BackgroundColor="#153C64"
+                        HorizontalOptions="Center">
+                        <Button.Triggers>
+                            <EventTrigger Event="Pressed">
+                                <animations:AnimateDouble From="1" To="0.9" TargetProperty="Button.Scale" Duration="300" Easing="Linear"/>
+                            </EventTrigger>
+                            <EventTrigger Event="Released">
+                                <animations:AnimateDouble From="0.9" To="1" TargetProperty="Button.Scale" Duration="300" Easing="Linear"/>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+                </Grid>
+
+            </Grid>
+        </Border>
+    </Grid>
+</mopups:PopupPage>

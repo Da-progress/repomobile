@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LoDo.MAUI.Views.Pages.MyGamesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:generic="clr-namespace:System.Collections.Generic;assembly=System.Runtime"
+    xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
+    xmlns:maanim="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"
+    xmlns:models="clr-namespace:LoDo.MAUI.Models"
+    xmlns:tabs="clr-namespace:Sharpnado.Tabs;assembly=Maui.Tabs"
+    xmlns:converters="clr-namespace:LoDo.MAUI.Converters"
+    xmlns:templates="clr-namespace:LoDo.MAUI.DataTemplates.Selectors"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodels="clr-namespace:LoDo.MAUI.ViewModels"
+    Title="Games"
+    x:DataType="viewmodels:MyGamesPageViewModel"
+    BackgroundColor="White">
+    <ContentPage.Resources>
+        <DataTemplate x:Key="OpenGame" x:DataType="models:Game">
+            <Grid
+                HeightRequest="80"
+                RowDefinitions="*,2"
+                TouchEffect.AnimationDuration="200"
+                TouchEffect.NormalBackgroundColor="White"
+                TouchEffect.PressedBackgroundColor="LightGray">
+                <Grid ColumnDefinitions="80,2,*">
+                    <Image Margin="10">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="MaterialOutlined"
+                                Glyph="{x:Static m:MaterialRegular.Sports_basketball}"
+                                Size="50"
+                                Color="Gray" />
+                        </Image.Source>
+                    </Image>
+                    <Rectangle
+                        Grid.Column="1"
+                        BackgroundColor="Gray"
+                        VerticalOptions="End" />
+                    <Grid
+                        Grid.Column="2"
+                        Padding="10"
+                        ColumnDefinitions="*,*,*,*">
+                        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="22.05.24"
+                                TextColor="Gray" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="18:00"
+                                TextColor="Gray" />
+                        </VerticalStackLayout>
+                        <Label
+                            Grid.Column="2"
+                            Grid.ColumnSpan="2"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="some place somewhere nice"
+                            TextColor="{DynamicResource PageBackgourndColor}"
+                            VerticalTextAlignment="Center" />
+                    </Grid>
+                </Grid>
+                <Rectangle
+                    Grid.Row="1"
+                    BackgroundColor="LightGray"
+                    HeightRequest="1"
+                    VerticalOptions="End" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="PlayedGame" x:DataType="models:Game">
+            <Grid
+                HeightRequest="80"
+                RowDefinitions="*,2"
+                TouchEffect.AnimationDuration="200"
+                TouchEffect.NormalBackgroundColor="White"
+                TouchEffect.PressedBackgroundColor="LightGray">
+                <Grid ColumnDefinitions="80,2,*">
+                    <Image Margin="10">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="MaterialOutlined"
+                                Glyph="{x:Static m:MaterialRegular.Sports_basketball}"
+                                Size="50"
+                                Color="Gray" />
+                        </Image.Source>
+                    </Image>
+                    <Rectangle
+                        Grid.Column="1"
+                        BackgroundColor="Gray"
+                        VerticalOptions="End" />
+                    <Grid
+                        Grid.Column="2"
+                        Padding="10"
+                        ColumnDefinitions="*,*,*,*">
+                        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="22.05.24"
+                                TextColor="Gray" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="18:00"
+                                TextColor="Gray" />
+                        </VerticalStackLayout>
+                        <Label
+                            Grid.Column="2"
+                            Grid.ColumnSpan="2"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="some place somewhere nice"
+                            TextColor="{DynamicResource PageBackgourndColor}"
+                            VerticalTextAlignment="Center" />
+                    </Grid>
+                </Grid>
+                <Rectangle
+                    Grid.Row="1"
+                    BackgroundColor="LightGray"
+                    HeightRequest="1"
+                    VerticalOptions="End" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="PlannedGame" x:DataType="models:Game">
+            <Grid
+                HeightRequest="80"
+                RowDefinitions="*,2"
+                TouchEffect.AnimationDuration="200"
+                TouchEffect.NormalBackgroundColor="White"
+                TouchEffect.PressedBackgroundColor="LightGray">
+                <Grid ColumnDefinitions="80,2,*">
+                    <Image Margin="10">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="MaterialOutlined"
+                                Glyph="{x:Static m:MaterialRegular.Sports_basketball}"
+                                Size="50"
+                                Color="Gray" />
+                        </Image.Source>
+                    </Image>
+                    <Rectangle
+                        Grid.Column="1"
+                        BackgroundColor="Gray"
+                        VerticalOptions="End" />
+                    <Grid
+                        Grid.Column="2"
+                        Padding="10"
+                        ColumnDefinitions="*,*,*,*">
+                        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="22.05.24"
+                                TextColor="Gray" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="18:00"
+                                TextColor="Gray" />
+                        </VerticalStackLayout>
+                        <Label
+                            Grid.Column="2"
+                            Grid.ColumnSpan="2"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="some place somewhere nice"
+                            TextColor="{DynamicResource PageBackgourndColor}"
+                            VerticalTextAlignment="Center" />
+                    </Grid>
+                </Grid>
+                <Rectangle
+                    Grid.Row="1"
+                    BackgroundColor="LightGray"
+                    HeightRequest="1"
+                    VerticalOptions="End" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="ConfirmedGame" x:DataType="models:Game">
+            <Grid
+                HeightRequest="80"
+                RowDefinitions="*,2"
+                TouchEffect.AnimationDuration="200"
+                TouchEffect.NormalBackgroundColor="White"
+                TouchEffect.PressedBackgroundColor="LightGray">
+                <Grid ColumnDefinitions="80,2,*">
+                    <Image Margin="10">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="MaterialOutlined"
+                                Glyph="{Binding Sport, Converter={converters:IconConverter}}"
+                                Size="50"
+                                Color="Gray" />
+                        </Image.Source>
+                    </Image>
+                    <Rectangle
+                        Grid.Column="1"
+                        BackgroundColor="Gray"
+                        VerticalOptions="End" />
+                    <Grid
+                        Grid.Column="2"
+                        Padding="10"
+                        ColumnDefinitions="*,*,*,*">
+                        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="22.05.24"
+                                TextColor="Gray" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="18:00"
+                                TextColor="Gray" />
+                        </VerticalStackLayout>
+                        <Label
+                            Grid.Column="2"
+                            Grid.ColumnSpan="2"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="some place somewhere nice"
+                            TextColor="{DynamicResource PageBackgourndColor}"
+                            VerticalTextAlignment="Center" />
+                    </Grid>
+                </Grid>
+                <Rectangle
+                    Grid.Row="1"
+                    BackgroundColor="LightGray"
+                    HeightRequest="1"
+                    VerticalOptions="End" />
+            </Grid>
+        </DataTemplate>
+        <templates:GamesTemplateSelector
+            x:Key="GamesSelector"
+            ConfirmedGame="{StaticResource ConfirmedGame}"
+            OpenGame="{StaticResource OpenGame}"
+            PlannedGame="{StaticResource PlannedGame}"
+            PlayedGame="{StaticResource PlayedGame}" />
+    </ContentPage.Resources>
+    <Grid Padding="0,10,0,0" RowDefinitions="80,*">
+        <Grid
+            Grid.Row="0"
+            ColumnDefinitions="80,*,80"
+            RowDefinitions="*,2">
+            <CarouselView
+                Grid.ColumnSpan="3"
+                BackgroundColor="Transparent"
+                IsSwipeEnabled="True"
+                ItemsSource="{Binding Headers}"
+                Loop="False"
+                PeekAreaInsets="100"
+                Position="{Binding CurrentIndex}"
+                PositionChangedCommand="{Binding LoadGamesCommand}"
+                VerticalOptions="Center">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout VerticalOptions="Center">
+                            <Label
+                                FontSize="35"
+                                HorizontalOptions="Center"
+                                Text="{Binding .}"
+                                TextColor="#002748"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="CurrentItem">
+                                        <VisualState.Setters>
+                                            <Setter Property="Scale" Value="1.1" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="PreviousItem">
+                                        <VisualState.Setters>
+                                            <Setter Property="Opacity" Value="0.5" />
+                                            <Setter Property="Scale" Value="0.8" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="NextItem">
+                                        <VisualState.Setters>
+                                            <Setter Property="Opacity" Value="0.5" />
+                                            <Setter Property="Scale" Value="0.8" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <Rectangle
+                Grid.Row="1"
+                Grid.ColumnSpan="3"
+                BackgroundColor="LightGray"
+                HeightRequest="1"
+                VerticalOptions="End" />
+        </Grid>
+        <RefreshView
+            Grid.Row="1"
+            IsClippedToBounds="True"
+            IsRefreshing="{Binding IsUpdating}"
+            MinimumHeightRequest="200"
+            RefreshColor="{DynamicResource PageBackgourndColor}">
+            <ScrollView>
+                <StackLayout
+                    BindableLayout.ItemTemplateSelector="{StaticResource GamesSelector}"
+                    BindableLayout.ItemsSource="{Binding CurrentGames}"
+                    MinimumHeightRequest="200">
+
+                    <BindableLayout.EmptyView>
+                        <ContentView HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <StackLayout Margin="0,0,0,50" Orientation="Vertical">
+                                <Label
+                                    FontSize="25"
+                                    Text="No such games yet,"
+                                    TextColor="{DynamicResource PageBackgourndColor}" />
+                                <Label
+                                    FontSize="25"
+                                    HorizontalTextAlignment="Center"
+                                    Text="go change it!"
+                                    TextColor="{DynamicResource PageBackgourndColor}"
+                                    VerticalTextAlignment="Center" />
+                                <Image Margin="0,10,0,0">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="MaterialOutlined"
+                                            Glyph="{x:Static m:MaterialRegular.Sentiment_dissatisfied}"
+                                            Size="80"
+                                            Color="{DynamicResource PageBackgourndColor}" />
+                                    </Image.Source>
+                                </Image>
+                            </StackLayout>
+                        </ContentView>
+                    </BindableLayout.EmptyView>
+                </StackLayout>
+            </ScrollView>
+        </RefreshView>
+    </Grid>
+</ContentPage>

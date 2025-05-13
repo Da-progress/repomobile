@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mopups:PopupPage
+    x:Class="LoDo.MAUI.Views.Popups.ChangePassPopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
+    xmlns:mct="clr-namespace:CommunityToolkit.Maui.Core;assembly=CommunityToolkit.Maui.Core"
+    xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:tabs="clr-namespace:Sharpnado.Tabs;assembly=Maui.Tabs"
+    xmlns:viewmodels="clr-namespace:LoDo.MAUI.ViewModels.PopupViewModels"
+    x:DataType="viewmodels:ChangePassPopupViewModel"
+    Background="#B0000000"
+    CloseWhenBackgroundIsClicked="True">
+  <Grid RowDefinitions="*,2.7*,*">
+        <Border BackgroundColor="#E1E7E0" Margin="30,0" Grid.Row="1">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20" />
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow
+                    Offset="0,5"
+                    Brush="Gray"
+                    Radius="5"
+                    Opacity="1">
+                </Shadow>
+            </Border.Shadow>
+                <Grid
+                Padding="10"
+                RowDefinitions="1.5*,*,*,*,*,*,*,*"
+                RowSpacing="5"
+                VerticalOptions="Fill">
+            <Grid Grid.Row="0" >
+                <Image>
+                    <Image.Source>
+                        <FontImageSource
+                            FontFamily="MaterialOutlined"
+                            Glyph="{x:Static m:MaterialOutlined.Lock_person}"
+                            Size="80"
+                            Color="#153C64" />
+                    </Image.Source>
+                </Image>
+            </Grid>
+                <Label 
+                    Grid.Row="1"
+                    Text="Change password" 
+                    FontSize="20" 
+                    FontAttributes="Bold" 
+                    FontFamily="RalewayRegular" 
+                    TextColor="#153C64"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"/>
+                <Button BackgroundColor="#153C64" Grid.Row="7"  VerticalOptions="Center" HorizontalOptions="Center"
+                        FontSize="20" 
+                        Padding="5"
+                        WidthRequest="118"
+                        FontAttributes="Bold" 
+                        FontFamily="RalewayRegular" 
+                        TextColor="#E1E7E0"
+                        CornerRadius="7"
+                        Text="Confirm"/>
+            </Grid>
+        </Border>
+    </Grid>
+</mopups:PopupPage>

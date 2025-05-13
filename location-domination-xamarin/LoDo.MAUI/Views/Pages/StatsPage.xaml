@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="LoDo.MAUI.Views.Pages.StatsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
+    xmlns:viewmodels="clr-namespace:LoDo.MAUI.ViewModels"
+    Background="#153C64"
+    x:DataType="viewmodels:StatsPageViewModel"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
+    <Shell.TitleView>
+        <Grid VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="Statistics"
+                   Style="{x:StaticResource MyCustomNavHeader}">
+
+            </Label>
+        </Grid>
+    </Shell.TitleView>
+    <Grid>
+        <Image Source="page_pat_light" Margin="0,0" Aspect="Fill" />
+        <Grid>
+            <ScrollView>
+                <VerticalStackLayout>
+                    <Border BackgroundColor="#E1E7E0" MinimumHeightRequest="135" MaximumHeightRequest="135" Margin="15">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="25"/>
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.8*,*,*,*" RowDefinitions="*,2,*">
+                            <Image Grid.RowSpan="3" BackgroundColor="Transparent" Margin="10">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="MaterialOutlined"
+                                        Glyph="{x:Static m:MaterialTwoTone.People_alt}"
+                                        Size="50"
+                                        Color="#153C64" />
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+    </Grid>
+</ContentPage>

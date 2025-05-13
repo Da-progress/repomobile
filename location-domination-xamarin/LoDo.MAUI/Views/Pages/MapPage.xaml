@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="LoDo.MAUI.Views.Pages.MapPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
+    xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+    xmlns:custom="clr-namespace:LoDo.MAUI.Views.Related.Controls"
+    xmlns:viewmodel="clr-namespace:LoDo.MAUI.ViewModels"
+    xmlns:models="clr-namespace:LoDo.MAUI.Models.App"
+    xmlns:map="clr-namespace:LoDo.MAUI.Views.Related.Controls.Map"
+    xmlns:animations="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"
+    xmlns:converters="clr-namespace:LoDo.MAUI.Converters"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:DataType="viewmodel:MapPageViewModel"
+    x:Name="ThisPage">
+    <Shell.TitleView>
+        <Grid VerticalOptions="Fill" HorizontalOptions="Fill">
+            <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                <Label Text="Map"
+                       Style="{x:StaticResource MyCustomNavHeader}">
+
+                </Label>
+            </Grid>
+            <Image Source="notifications" IsVisible="{Binding IsLoggedIn}" Margin="0,0,10,0" VerticalOptions="Center" HorizontalOptions="End">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenNotificationsCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+
+    </Shell.TitleView>
+    <Grid RowDefinitions="60,2*,*">
+        <Grid Grid.RowSpan="3">
+            <map:ImageMap x:Name="map"
+                          IsShowingUser="True"
+                          CustomPins="{Binding GamesAndEvents}" />
+            <Grid RowSpan="3" BackgroundColor="White" Opacity="0">
+                <Grid.Triggers>
+                    <DataTrigger Binding="{Binding IsBusy}" Value="True" TargetType="Grid">
+                        <DataTrigger.EnterActions>
+                            <animations:AnimateDouble From="0" To="0.7" Duration="500" Easing="Linear"
+                                                      TargetProperty="Grid.Opacity" />
+                        </DataTrigger.EnterActions>
+                        <DataTrigger.ExitActions>
+                            <animations:AnimateDouble From="0.7" To="0" Duration="500" Easing="Linear"
+                                                      TargetProperty="Grid.Opacity" />
+                        </DataTrigger.ExitActions>
+                    </DataTrigger>
+                </Grid.Triggers>
+                <ActivityIndicator TranslationY="-50"
+                                   Color="#153C64"
+                                   Opacity="0"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   IsRunning="True">
+                    <ActivityIndicator.Triggers>
+                        <DataTrigger Binding="{Binding IsBusy}" Value="True" TargetType="ActivityIndicator">
+                            <DataTrigger.EnterActions>
+                                <animations:AnimateDouble From="0" To="0.7" Duration="500" Easing="Linear"
+                                                          TargetProperty="ActivityIndicator.Opacity" />
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <animations:AnimateDouble From="0.7" To="0" Duration="500" Easing="Linear"
+                                                          TargetProperty="ActivityIndicator.Opacity" />
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                    </ActivityIndicator.Triggers>
+                </ActivityIndicator>
+            </Grid>
+        </Grid>
+        <Grid ColumnDefinitions="*,60,5">
+            <Grid Grid.Column="1" Margin="10">
+                <ImageButton Aspect="AspectFit" BackgroundColor="#153C64" CornerRadius="5" Clicked="FindMyLocation"
+                             Command="{Binding TestingAnimationCommand}" />
+                <Image Margin="8">
+                    <Image.Source>
+                        <FontImageSource
+                            FontFamily="MaterialOutlined"
+                            Glyph="{x:Static m:MaterialOutlined.My_location}"
+                            Size="50"
+                            Color="#E1E7E0" />
+                    </Image.Source>
+                </Image>
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="1" RowSpan="2" RowDefinitions="*,2*">
+            <Grid Row="1" RowDefinitions="1.5*,*,3.5*,0.5*" RowSpacing="10" Padding="15,0" TranslationY="-500"
+                  Opacity="0">
+                <Grid.Triggers>
+                    <DataTrigger TargetType="Grid" Binding="{Binding IsDetails}" Value="true">
+                        <DataTrigger.EnterActions>
+                            <animations:AnimateDouble From="500" To="0" Delay="200" TargetProperty="Grid.TranslationY"
+                                                      Duration="500"
+                                                      Easing="SpringIn" />
+                            <animations:AnimateDouble From="0" To="1" TargetProperty="Grid.Opacity" Duration="300"
+                                                      Easing="Linear" />
+                        </DataTrigger.EnterActions>
+                        <DataTrigger.ExitActions>
+                            <animations:AnimateDouble From="0" To="500" TargetProperty="Grid.TranslationY"
+                                                      Duration="500"
+                                                      Easing="Linear" />
+                            <animations:AnimateDouble From="1" To="0" TargetProperty="Grid.Opacity"
+                                                      Duration="400" Easing="Linear" />
+                        </DataTrigger.ExitActions>
+                    </DataTrigger>
+                </Grid.Triggers>
+                <Border BackgroundColor="#153C64" Grid.Row="1">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="15" />
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="*,5*,*,*">
+                        <Image Opacity="0.5" Margin="12">
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="MaterialRegular"
+                                    Glyph="{x:Static m:MaterialTwoTone.Location_on}"
+                                    Size="80"
+                                    Color="#E1E7E0" />
+                            </Image.Source>
+                        </Image>
+                        <Grid Grid.Column="1" RowDefinitions="*,*">
+                            <Label TextColor="#E1E7E0"
+                                   Text="{Binding SelecteLocationName}"
+                                   FontSize="18"
+                                   FontFamily="RalewayRegular"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="End"
+                                   HorizontalOptions="Start" />
+                            <Label TextColor="#E1E7E0"
+                                   Grid.Row="1"
+                                   Text="{Binding SelectedLocationAddress}"
+                                   FontSize="16"
+                                   Opacity="0.5"
+                                   FontFamily="RalewayRegular"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Start"
+                                   HorizontalOptions="Start" />
+                        </Grid>
+                        <Grid Grid.Column="2" Grid.ColumnSpan="2">
+                            <Image Margin="16">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="MaterialRegular"
+                                        Glyph="{x:Static m:MaterialSharp.East}"
+                                        Size="80"
+                                        Color="#E1E7E0" />
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </Grid>
+                </Border>
+                <Grid
+                    Grid.Row="2"
+                    ColumnDefinitions="*,*"
+                    x:Name="LeaderboardGrid"
+                    ColumnSpacing="10">
+                    <Border Grid.Column="0" BackgroundColor="#153C64">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="15" />
+                        </Border.StrokeShape>
+                        <Grid RowDefinitions="auto,2.5,*" RowSpacing="5" Padding="5,10">
+                            <Label TextColor="#E1E7E0"
+                                   Text="Leaderboard"
+                                   FontSize="18"
+                                   FontFamily="RalewayRegular"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center" />
+                            <Rectangle BackgroundColor="#E1E7E0" Grid.Row="1" Margin="15,0" />
+                            <ScrollView Grid.Row="2">
+                                <CollectionView ItemsSource="{Binding LeaderboardUsers}">
+                                    <CollectionView.EmptyView>
+                                        <Grid>
+                                            <Label TextColor="#E1E7E0"
+                                                   Text="No games"
+                                                   FontSize="18"
+                                                   FontFamily="RalewayRegular"
+                                                   FontAttributes="Bold"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="Center" />
+                                        </Grid>
+                                    </CollectionView.EmptyView>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="models:LeaderboardUserModel">
+                                            <Grid MinimumHeightRequest="53" MaximumHeightRequest="53"
+                                                  ColumnDefinitions="1.5*,4*" ColumnSpacing="5">
+                                                <Image
+                                                    Source="{Binding UserIndex,Converter={converters:IndexToMedalConverter}}"
+                                                    Aspect="AspectFit">
+                                                    <Image.Triggers>
+                                                        <DataTrigger TargetType="Image"
+                                                                     Binding="{Binding UserIndex, Converter={converters:GreaterThenConverter}, ConverterParameter=3}"
+                                                                     Value="true">
+                                                            <Setter Property="Margin" Value="10" />
+                                                        </DataTrigger>
+                                                    </Image.Triggers>
+                                                </Image>
+                                                <Label Text="{Binding Username}"
+                                                       Grid.Column="1"
+                                                       VerticalOptions="Center"
+                                                       FontSize="18"
+                                                       TextColor="White" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </ScrollView>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2" RowDefinitions="*,*,*,0.5*" Margin="15,0" RowSpacing="10">
+            <Grid.Triggers>
+                <DataTrigger TargetType="Grid" Binding="{Binding IsDetails}" Value="true">
+                    <DataTrigger.EnterActions>
+                        <animations:AnimateDouble From="0" To="-500" TargetProperty="Grid.TranslationX" Duration="500"
+                                                  Easing="Linear" />
+                        <animations:AnimateDouble From="1" To="0" TargetProperty="Grid.Opacity" Duration="300"
+                                                  Easing="Linear" />
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <animations:AnimateDouble From="-500" To="0" TargetProperty="Grid.TranslationX" Duration="500"
+                                                  Easing="Linear" />
+                        <animations:AnimateDouble From="0" To="1" TargetProperty="Grid.Opacity" Delay="200"
+                                                  Duration="300" Easing="Linear" />
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+            </Grid.Triggers>
+            <Border BackgroundColor="#153C64">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="15" />
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,5*,*,*">
+                    <Image Opacity="0.5" Margin="8">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="MaterialRegular"
+                                Glyph="{x:Static m:MaterialTwoTone.Location_on}"
+                                Size="80"
+                                Color="#E1E7E0" />
+                        </Image.Source>
+                    </Image>
+                    <Entry Grid.Column="1"
+                           Placeholder="Type to search"
+                           FontSize="18"
+                           TextColor="#E1E7E0"
+                           PlaceholderColor="LightGray"
+                           VerticalOptions="Center"
+                           FontFamily="RalewayRegular" />
+                    <Grid Grid.Column="2">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToAddLocationPageCommand}" />
+                        </Grid.GestureRecognizers>
+                        <Grid.Behaviors>
+                            <toolkit:TouchBehavior
+                                DefaultBackgroundColor="Transparent"
+                                DefaultScale="1"
+                                PressedScale="0.95"
+                                DefaultAnimationDuration="400"
+                                DefaultAnimationEasing="{x:Static Easing.Linear}" />
+                        </Grid.Behaviors>
+                        <Image Margin="8">
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="MaterialRegular"
+                                    Glyph="{x:Static m:MaterialTwoTone.Add_location}"
+                                    Size="80"
+                                    Color="#E1E7E0" />
+                            </Image.Source>
+                        </Image>
+                    </Grid>
+                    <Grid Grid.Column="3">
+                        <Image Margin="8">
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="MaterialRegular"
+                                    Glyph="{x:Static m:MaterialTwoTone.Emoji_events}"
+                                    Size="80"
+                                    Color="#E1E7E0" />
+                            </Image.Source>
+                        </Image>
+                    </Grid>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1" Margin="0,0">
+                <ScrollView Orientation="Horizontal">
+                    <HorizontalStackLayout Spacing="5">
+                        <Border BackgroundColor="#153C64">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="30,auto" HeightRequest="50" Padding="10">
+                                <Image Margin="0" Grid.Column="0" VerticalOptions="Center" Source="chess">
+                                </Image>
+                                <Label TextColor="#E1E7E0"
+                                       Text="Chess"
+                                       FontSize="15"
+                                       FontFamily="RalewayRegular"
+                                       FontAttributes="Bold"
+                                       Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center" />
+                            </Grid>
+                        </Border>
+                        <Border BackgroundColor="#153C64">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="30,auto" HeightRequest="50" Padding="10">
+                                <Image Scale="1.1" Margin="0" Grid.Column="0" VerticalOptions="Center"
+                                       HorizontalOptions="Center" Source="darts">
+                                </Image>
+                                <Label TextColor="#E1E7E0"
+                                       Text="Darts"
+                                       FontSize="15"
+                                       FontFamily="RalewayRegular"
+                                       FontAttributes="Bold"
+                                       Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center" />
+                            </Grid>
+                        </Border>
+                        <Border BackgroundColor="#153C64">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="30,auto" HeightRequest="50" Padding="10">
+                                <Image Scale="1.1" Margin="0" Grid.Column="0" VerticalOptions="Center"
+                                       Source="billiard" HorizontalOptions="Center">
+                                </Image>
+                                <Label TextColor="#E1E7E0"
+                                       Text="Billiard"
+                                       FontSize="15"
+                                       FontFamily="RalewayRegular"
+                                       FontAttributes="Bold"
+                                       Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center" />
+                            </Grid>
+                        </Border>
+                        <Border BackgroundColor="#153C64">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="30,auto" HeightRequest="50" Padding="10">
+                                <Image Margin="0" Grid.Column="0" VerticalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="MaterialRegular"
+                                            Glyph="{x:Static m:MaterialTwoTone.Sports_cricket}"
+                                            Size="80"
+                                            Color="#E1E7E0" />
+                                    </Image.Source>
+                                </Image>
+                                <Label TextColor="#E1E7E0"
+                                       Text="Table tennis"
+                                       FontSize="15"
+                                       FontFamily="RalewayRegular"
+                                       FontAttributes="Bold"
+                                       Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center" />
+                            </Grid>
+                        </Border>
+                        <Border BackgroundColor="#153C64">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="30,auto" HeightRequest="50" Padding="10">
+                                <Image Scale="1.2" Margin="0" Grid.Column="0" VerticalOptions="Center"
+                                       Source="table_football" HorizontalOptions="Center">
+
+                                </Image>
+                                <Label TextColor="#E1E7E0"
+                                       Text="Table football"
+                                       FontSize="15"
+                                       FontFamily="RalewayRegular"
+                                       FontAttributes="Bold"
+                                       Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center" />
+                            </Grid>
+                        </Border>
+                        <Border BackgroundColor="#153C64">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="30,auto" HeightRequest="50" Padding="10">
+                                <Image Margin="0" Grid.Column="0" VerticalOptions="Center" Source="boules"
+                                       HorizontalOptions="Center" Scale="1.2" />
+                                <Label TextColor="#E1E7E0"
+                                       Text="Boules"
+                                       FontSize="15"
+                                       FontFamily="RalewayRegular"
+                                       FontAttributes="Bold"
+                                       Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center" />
+                            </Grid>
+                        </Border>
+                        <Border BackgroundColor="#153C64">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="30,auto" HeightRequest="50" Padding="10">
+                                <Image Margin="0" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"
+                                       Scale="0.8">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="MaterialRegular"
+                                            Glyph="{x:Static m:MaterialTwoTone.Sports_basketball}"
+                                            Size="80"
+                                            Color="#E1E7E0" />
+                                    </Image.Source>
+                                </Image>
+                                <Label TextColor="#E1E7E0"
+                                       Text="Baskteball"
+                                       FontSize="15"
+                                       FontFamily="RalewayRegular"
+                                       FontAttributes="Bold"
+                                       Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center" />
+                            </Grid>
+                        </Border>
+                    </HorizontalStackLayout>
+                </ScrollView>
+            </Grid>
+            <Grid Grid.Row="2" ColumnDefinitions="*,3*,*">
+                <Grid Grid.Column="1" ColumnDefinitions="3*,*">
+                    <Button BackgroundColor="#E1E7E0"
+                            Command="{Binding UpdateSearchBoolStateCommand}"
+                            CornerRadius="18"
+                            Grid.ColumnSpan="2" />
+                    <Label Text="Open games only"
+                           TextColor="#153C64"
+                           FontSize="15"
+                           FontFamily="RalewayRegular"
+                           FontAttributes="Bold"
+                           InputTransparent="True"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center" />
+                    <custom:SmallBlueSwitch Grid.Column="2"
+                                            x:Name="BlueSwitch"
+                                            IsToggled="{Binding OpenGamesOnly}"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            TranslationX="-10"
+                                            Scale="0.6"
+                                            InputTransparent="False" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

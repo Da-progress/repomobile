@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:icons="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
+       xmlns:local="clr-namespace:LoDo.MAUI.Views.Pages"
+       xmlns:views="clr-namespace:LoDo.MAUI.Views.Related"
+       Title="LoDo.MAUI"
+       FlyoutBackground="#E1E7E0"
+       Shell.BackgroundColor="#E1E7E0"
+       Shell.FlyoutBackdrop="#50FFFFFF"
+       Shell.FlyoutBehavior="Flyout"
+       Shell.ForegroundColor="#2F6D80"
+       Shell.NavBarHasShadow="True"
+       Shell.TabBarIsVisible="False"
+       x:Class="LoDo.MAUI.UnloggedShell"
+       Shell.TitleColor="#2F6D80">
+    <Shell.FlyoutHeader>
+        <views:UnloggedHeaderView HeightRequest="300" />
+    </Shell.FlyoutHeader>
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid RowDefinitions="*,2.5" ColumnDefinitions="1.25*,9*" ColumnSpacing="10" HeightRequest="33"
+                  Margin="5,7,5,0">
+                <Border
+                    BackgroundColor="#153C64"
+                    Padding="3">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5" />
+                    </Border.StrokeShape>
+                    <Image>
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="MaterialOutlined"
+                                Glyph="{Binding Icon}"
+                                Size="50"
+                                Color="#E1E7E0" />
+                        </Image.Source>
+                    </Image>
+                </Border>
+                <Label
+                    Grid.Column="1"
+                    Text="{Binding Title}"
+                    FontSize="20"
+                    TextColor="#2F6D80"
+                    FontFamily="RalewayRegular"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Start"
+                    FontAttributes="Bold" />
+                <Rectangle
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    VerticalOptions="Fill"
+                    MaximumHeightRequest="2"
+                    BackgroundColor="#2F6D80" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+    <FlyoutItem Title="Home" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Title="Map"
+            ContentTemplate="{DataTemplate local:MapPage}"
+            Icon="{x:Static icons:MaterialOutlined.Map}"
+            Route="MapPage" />
+        <ShellContent
+            Title="About"
+            ContentTemplate="{DataTemplate local:AboutPage}"
+            Icon="{x:Static icons:MaterialOutlined.Info}"
+            Route="AboutPage" />
+        <ShellContent
+            Title="Settings"
+            ContentTemplate="{DataTemplate local:SettingsPage}"
+            Icon="{x:Static icons:MaterialOutlined.Settings}"
+            Route="SettingsPage" />
+        <ShellContent
+            Title="Sing up"
+            ContentTemplate="{DataTemplate local:SignPage}"
+            Icon="{x:Static icons:MaterialOutlined.Person_add}"
+            Route="SingPage" />
+        <ShellContent
+            Title="Sign in"
+            ContentTemplate="{DataTemplate local:LoginPage}"
+            Icon="{x:Static icons:MaterialOutlined.Login}"
+            Route="LoginPage" />
+    </FlyoutItem>
+</Shell>

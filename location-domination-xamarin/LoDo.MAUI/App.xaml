@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application
+    x:Class="LoDo.MAUI.App"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:LoDo.MAUI"
+    xmlns:tabs="clr-namespace:Sharpnado.Tabs;assembly=Maui.Tabs">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/DarkTheme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="MyCustomNavHeader" TargetType="Label">
+                <Setter Property="FontFamily" Value="RalewayRegular"/>
+                <Setter Property="Margin" Value="{OnPlatform Android='0,0,75,0', iOS='0,0,50,0'}"/>
+                <Setter Property="FontSize" Value="20"></Setter>
+                <Setter Property="TextColor" Value="#2F6D80"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="PopupBorder" TargetType="Border">
+                <Setter Property="BackgroundColor" Value="#E1E7E0"/>
+                <Setter Property="Stroke" Value="Transparent"/>
+                <Setter Property="StrokeShape">
+                    <Setter.Value>
+                        <RoundRectangle CornerRadius="30"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Shadow">
+                    <Setter.Value>
+                        <Shadow Offset="0,0"
+                                Radius="10"
+                                Brush="Black"
+                                Opacity="0.35"></Shadow>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="VerticalOptions" Value="Fill"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

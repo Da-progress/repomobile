@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:LoDo.MAUI.Models"
+             xmlns:viewmodels="clr-namespace:LoDo.MAUI.ViewModels"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             xmlns:animations="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"
+             x:DataType="viewmodels:SponsorshipPageViewModel"
+             Title="Sponsorship"
+             BackgroundColor="#E1E7E0"
+             x:Class="LoDo.MAUI.Views.Pages.SponsorshipPage">
+    <Shell.TitleView>
+        <Grid VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="Sponsorship"
+                   Style="{x:StaticResource MyCustomNavHeader}">
+
+            </Label>
+        </Grid>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid BackgroundColor="#E1E7E0">
+            <Image Source="page_pat" Aspect="AspectFill" />
+            <Grid RowDefinitions="*,5.5*,*">
+                <Border Style="{x:StaticResource PopupBorder}" Grid.Row="1" Margin="20,0">
+                    <Grid RowDefinitions="50,auto,auto,150,*" RowSpacing="20" Padding="20,30">
+                        <Image Source="nike" Scale="1.5" VerticalOptions="Center" MaximumWidthRequest="90" />
+                        <Label Grid.Row="1" Text="Winter Season 2025" FontSize="20" FontAttributes="Bold"
+                               FontFamily="RalewayRegular"
+                               VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="#153C64">
+                        </Label>
+                        <Grid Grid.Row="2">
+                            <Label VerticalOptions="Start" HorizontalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span FontSize="18" TextColor="#2F6D80"
+                                              FontFamily="RalewayRegular"
+                                              Text="We are excited to announce our partnership with Nike, offering incredible prizes to our community." />
+                                        <Span FontSize="18" TextColor="#2F6D80"
+                                              Text="{x:Static system:Environment.NewLine}" />
+                                        <Span FontSize="18" TextColor="#2F6D80"
+                                              Text="{x:Static system:Environment.NewLine}" />
+                                        <Span FontSize="18" TextColor="#2F6D80"
+                                              FontFamily="RalewayRegular"
+                                              Text="Play on locations from the list below to win prizes! " />
+                                        <Span FontSize="18" TextColor="#2F6D80"
+                                              Text="{x:Static system:Environment.NewLine}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                        <Grid Row="3">
+                            <ScrollView VerticalScrollBarVisibility="Always" >
+                                <CollectionView ItemsSource="{Binding SponsorshipList}">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="models:Location">
+                                            <Grid ColumnDefinitions="50,*" HeightRequest="50">
+                                                <Image Margin="5">
+                                                    <Image.Source>
+                                                        <FontImageSource
+                                                            FontFamily="MaterialOutlined"
+                                                            Glyph="{x:Static m:MaterialRegular.Pin_drop}"
+                                                            Size="40"
+                                                            Color="#153C64" />
+                                                    </Image.Source>
+                                                </Image>
+                                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Fill">
+                                                    <Label Text="Location name" FontSize="18" FontAttributes="Bold"    FontFamily="RalewayRegular" TextColor="#153C64"/>
+                                                    <Label Text="Location info" FontSize="16" TextColor="#153C64"    FontFamily="RalewayRegular"/>
+                                                </VerticalStackLayout>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </ScrollView>
+                        </Grid>
+                        <Grid Row="4">
+                            <Button
+                                Text="Map"
+                                Padding="5"
+                                FontFamily="RalewayRegular"
+                                Command="{Binding CheckLocationsComamnd}"
+                                TextColor="#E1E7E0"
+                                FontSize="20"
+                                CornerRadius="7"
+                                MinimumWidthRequest="100"
+                                FontAttributes="Bold"
+                                VerticalOptions="Center"
+                                BackgroundColor="#153C64"
+                                HorizontalOptions="Center">
+                                <Button.Triggers>
+                                    <EventTrigger Event="Pressed">
+                                        <animations:AnimateDouble From="1" To="0.9" TargetProperty="Button.Scale" Duration="300" Easing="Linear"/>
+                                    </EventTrigger>
+                                    <EventTrigger Event="Released">
+                                        <animations:AnimateDouble From="0.9" To="1" TargetProperty="Button.Scale" Duration="300" Easing="Linear"/>
+                                    </EventTrigger>
+                                </Button.Triggers>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

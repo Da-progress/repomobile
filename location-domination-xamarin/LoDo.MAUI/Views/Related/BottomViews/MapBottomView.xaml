@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet
+    x:Class="LoDo.MAUI.Views.Related.BottomViews.MapBottomView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:LoDo.MAUI.ViewModels.BottomViewsViewModels"
+    xmlns:m="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
+    xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+    x:DataType="viewmodels:MapBottomIViewViewModel"
+    BackgroundColor="Transparent"
+    HasBackdrop="True">
+    <VerticalStackLayout HeightRequest="350">
+        <ScrollView>
+            <Grid
+                Padding="10"
+                RowDefinitions="auto,auto,auto,50"
+                RowSpacing="5">
+                <!--  Location info  -->
+                <Frame
+                    Grid.Row="0"
+                    Padding="0"
+                    BackgroundColor="White"
+                    CornerRadius="20">
+                    <Grid RowDefinitions="auto,2,auto">
+                        <Grid
+                            ColumnDefinitions="60,*"
+                            HeightRequest="50"
+                            RowDefinitions="*,2">
+                            <Grid.GestureRecognizers>
+                                <!--<TapGestureRecognizer Command="{Binding GoToStatsCommand}" />-->
+                            </Grid.GestureRecognizers>
+                            <Image
+                                Margin="10,0,0,0"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="MaterialOutlined"
+                                        Glyph="{x:Static m:MaterialRegular.Sports_basketball}"
+                                        Color="Gray" />
+                                </Image.Source>
+                            </Image>
+                            <VerticalStackLayout Grid.Column="1">
+                                <Label
+                                    FontSize="20"
+                                    Text="Location name"
+                                    TextColor="{DynamicResource PageBackgourndColor}"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    FontSize="16"
+                                    Text="Location Adress very very very very very very very long"
+                                    TextColor="Gray"
+                                    VerticalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </Grid>
+                        <Rectangle
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            BackgroundColor="LightGray"
+                            HeightRequest="1"
+                            VerticalOptions="End" />
+                        <Grid
+                            Grid.Row="2"
+                            ColumnDefinitions="*,60"
+                            HeightRequest="50"
+                            RowDefinitions="*,2"
+                            TouchEffect.AnimationDuration="200"
+                            TouchEffect.NormalBackgroundColor="White"
+                            TouchEffect.PressedBackgroundColor="LightGray">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Grid.GestureRecognizers>
+                            <Image
+                                Grid.Column="1"
+                                Margin="5"
+                                VerticalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="MaterialOutlined"
+                                        Glyph="{x:Static m:MaterialRegular.Arrow_forward}"
+                                        Color="Gray" />
+                                </Image.Source>
+                            </Image>
+
+                            <Label
+                                Grid.Column="0"
+                                Margin="10,0,0,0"
+                                FontSize="20"
+                                Text="Check out games"
+                                TextColor="Gray"
+                                VerticalTextAlignment="Center" />
+                        </Grid>
+                    </Grid>
+                </Frame>
+                <!--  Leaderboard  -->
+                <Frame
+                    Grid.Row="1"
+                    Padding="5"
+                    BackgroundColor="White"
+                    CornerRadius="20">
+                    <Grid RowDefinitions="25,2,130">
+                        <Label
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="Location leaderboard"
+                            TextColor="{DynamicResource PageBackgourndColor}"
+                            VerticalTextAlignment="Center" />
+                        <Rectangle
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            BackgroundColor="LightGray"
+                            HeightRequest="1"
+                            VerticalOptions="End" />
+                        <RefreshView
+                            Grid.Row="2"
+                            IsClippedToBounds="True"
+                            IsRefreshing="{Binding IsUpdating}"
+                            MinimumHeightRequest="200"
+                            RefreshColor="{DynamicResource PageBackgourndColor}">
+                            <ScrollView>
+                                <StackLayout BindableLayout.ItemsSource="{Binding LocationGames}">
+                                    <BindableLayout.EmptyView>
+                                        <ContentView HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label
+                                                    FontSize="16"
+                                                    Text="No such games yet"
+                                                    TextColor="{DynamicResource PageBackgourndColor}" />
+                                                <Label
+                                                    FontSize="16"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="go change it!"
+                                                    TextColor="{DynamicResource PageBackgourndColor}"
+                                                    VerticalTextAlignment="Center" />
+                                                <Image Margin="0,10,0,0">
+                                                    <Image.Source>
+                                                        <FontImageSource
+                                                            FontFamily="MaterialOutlined"
+                                                            Glyph="{x:Static m:MaterialRegular.Sentiment_dissatisfied}"
+                                                            Size="30"
+                                                            Color="{DynamicResource PageBackgourndColor}" />
+                                                    </Image.Source>
+                                                </Image>
+                                            </StackLayout>
+                                        </ContentView>
+                                    </BindableLayout.EmptyView>
+                                </StackLayout>
+                            </ScrollView>
+                        </RefreshView>
+                    </Grid>
+                </Frame>
+                <!--  Sponsor info plus image  -->
+                <Frame
+                    Grid.Row="2"
+                    Padding="5"
+                    MinimumHeightRequest="50"
+                    BackgroundColor="White"
+                    CornerRadius="15">
+                    <Label
+                        Margin="5,0,0,0"
+                        FontSize="20"
+                        LineBreakMode="WordWrap"
+                        Text="Sponsored by: Bannyk Ivan"
+                        TextColor="{DynamicResource PageBackgourndColor}"
+                        VerticalTextAlignment="Center" />
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </VerticalStackLayout>
+</the49:BottomSheet>
